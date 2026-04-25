@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Musings — Max Minninna</title>
+  <meta name="description" content="Photos with no camera. Observations and fragments by Max Minninna." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../assets/M symbol 3.svg" />
+  <style>
+    :root {
+      --bg:    #0b0b0b;
+      --text:  #f6f2ea;
+      --muted: rgba(246,242,234,.48);
+      --amber: #af8570;
+      --amber-dim: rgba(175,133,112,.28);
+      --line:  rgba(246,242,234,.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, #141414 0%, #181818 40%, #151515 100%);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(18px, 4vw, 54px); height: 64px;
+      background: rgba(10,10,10,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand-wordmark { height: 17px; filter: invert(1) brightness(1.06); opacity: .78; }
+    .site-nav { display: flex; gap: 28px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    .site-nav a { color: rgba(246,242,234,.45); transition: color .3s; }
+    .site-nav a:hover { color: rgba(246,242,234,.92); }
+    @media (max-width: 430px) { .site-nav { gap: 10px; font-size: 10px; } }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 116px clamp(18px, 5vw, 64px) 56px;
+    }
+    .page-eyebrow {
+      font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 14px; display: block;
+    }
+    .page-title {
+      font-size: clamp(42px, 7vw, 86px);
+      font-weight: 300; letter-spacing: -.045em; line-height: .92;
+    }
+    .page-subtitle {
+      margin-top: 18px; font-size: 14px;
+      color: rgba(246,242,234,.34); font-style: italic; font-weight: 300;
+    }
+
+    .divider { height: 1px; background: var(--line); margin: 0 clamp(18px, 5vw, 64px); }
+
+    /* ── MUSINGS LIST ── */
+    .musings-list {
+      padding: 0 clamp(18px, 5vw, 64px);
+    }
+    .musings-loading {
+      padding: 80px 0; font-size: 11px; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(246,242,234,.16);
+    }
+
+    /* ── ENTRY ── */
+    .musing-entry {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      grid-template-areas: "date content ghost";
+      gap: 0 28px;
+      padding: 52px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .musing-datecol  { grid-area: date; }
+    .musing-content  { grid-area: content; }
+    .musing-ghost    { grid-area: ghost; }
+
+    /* G — linea ambra verticale sul bordo sinistro */
+    .musing-entry::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 52px; bottom: 52px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--amber) 0%, rgba(175,133,112,.2) 100%);
+      transition: opacity .4s;
+    }
+    .musing-entry:hover::before {
+      opacity: 1;
+    }
+
+    /* ghost title — colonna destra, blur/focus sull'hover */
+    .musing-ghost {
+      align-self: center;
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 700;
+      letter-spacing: -.06em;
+      line-height: 1;
+      color: rgba(246,242,234,.04);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      filter: blur(4px);
+      transition: color .8s ease, filter .8s ease;
+      padding-right: 8px;
+    }
+    .musing-entry:hover .musing-ghost {
+      color: rgba(175,133,112,.10);
+      filter: blur(0px);
+    }
+    /* nascosto su mobile */
+    @media (max-width: 768px) {
+      .musing-ghost { display: none; }
+      .musing-entry {
+        grid-template-columns: 48px 1fr;
+        grid-template-areas: "date content";
+      }
+    }
+
+    /* H — data verticale: giorno + mese leggibili */
+    .musing-datecol {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+      gap: 4px;
+    }
+    .musing-day {
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: -.02em;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .musing-month {
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(175,133,112,.65);
+      line-height: 1;
+      text-align: center;
+    }
+
+    /* Content col */
+    .musing-content {
+      opacity: 0;
+      animation: none;
+    }
+    .musing-entry.ink-visible .musing-content {
+      animation: inkIn 1.1s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes inkIn {
+      from { opacity: 0; transform: translateX(8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .musing-title {
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 300; letter-spacing: -.02em; line-height: 1.2;
+      margin-bottom: 18px; max-width: 520px;
+      cursor: pointer; transition: color .3s;
+    }
+    .musing-title:hover { color: rgba(246,242,234,.62); }
+
+    .musing-body {
+      font-size: 15px; line-height: 1.92;
+      color: rgba(246,242,234,.58); font-weight: 300;
+      max-width: 520px;
+      max-height: 84px; overflow: hidden; position: relative;
+      transition: max-height .7s cubic-bezier(.16,1,.3,1);
+    }
+    .musing-body p { margin-bottom: 1.1em; }
+    .musing-body p:last-child { margin-bottom: 0; }
+    .musing-body::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 48px;
+      background: linear-gradient(transparent, #181818);
+      transition: opacity .5s;
+    }
+    .musing-entry.expanded .musing-body { max-height: 4000px; }
+    .musing-entry.expanded .musing-body::after { opacity: 0; }
+
+    .musing-toggle {
+      margin-top: 18px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(246,242,234,.22); cursor: pointer;
+      border: none; background: none; padding: 0; font-family: inherit;
+      transition: color .25s;
+    }
+    .musing-toggle:hover { color: var(--amber); }
+    .musing-toggle-arrow {
+      width: 10px; height: 10px;
+      border-right: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: rotate(45deg); transition: transform .3s; flex-shrink: 0;
+    }
+    .musing-entry.expanded .musing-toggle-arrow { transform: rotate(-135deg); }
+
+    /* Mobile: data in riga */
+    @media (max-width: 600px) {
+      .musing-entry {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .musing-datecol {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 9px;
+      }
+      .musing-day { font-size: 16px; }
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      margin-top: 80px; padding: 28px clamp(18px, 5vw, 64px);
+      border-top: 1px solid var(--line);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .footer-symbol { width: 22px; opacity: .26; }
+    .footer-copy { font-size: 11px; color: rgba(246,242,234,.2); letter-spacing: .06em; }
+    .footer-back {
+      margin-left: auto; font-size: 10px; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(246,242,234,.24); transition: color .25s;
+    }
+    .footer-back:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="../index.html">
+      <img src="../assets/mmlogo_250.svg" alt="Max Minninna" class="brand-wordmark" />
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html#latest">Latest</a>
+      <a href="../index.html#selected">Collections</a>
+      <a href="../index.html#archive">Portfolio</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Max Minninna</span>
+    <h1 class="page-title">My Musings</h1>
+    <p class="page-subtitle">Photos with no camera.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <main class="musings-list" id="musingsList">
+    <p class="musings-loading" id="loadingState">—</p>
+  </main>
+
+  <footer class="site-footer">
+    <img src="../assets/M symbol 3.svg" alt="" class="footer-symbol" />
+    <p class="footer-copy">© 2026 Max Minninna</p>
+    <a href="../index.html" class="footer-back">← Portfolio</a>
+  </footer>
+
+  <script src="musings.js"></script>
+</body>
+</html>

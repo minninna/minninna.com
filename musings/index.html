@@ -28,39 +28,95 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* ── HEADER ── */
-    .site-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(18px, 4vw, 54px); height: 64px;
-      background: rgba(10,10,10,.88);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
+    /* ── HEADER — identico alla home ── */
+    .site-header{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(10,10,10,.38);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+    .brand{display:flex;align-items:center;gap:12px}.brand-wordmark{height:17px;width:auto;filter:invert(1) brightness(1.06);opacity:.58}
+    .site-nav{display:flex;gap:16px;font-size:12px;letter-spacing:.01em;font-weight:300;text-transform:none}
+    .site-nav a{color:rgba(255,255,255,.52);transition:color .3s ease}
+    .site-nav a:hover{color:rgba(255,255,255,.95)}
+    .site-nav--desktop { display: flex; }
+    .site-nav--mobile  { display: none; }
+    @media (max-width: 430px) {
+      .site-nav--desktop { display: none; }
+      .site-nav--mobile  { display: flex; gap: 10px; font-size: 11px; letter-spacing: 0; text-transform: none; }
+      .site-nav--mobile a { color: rgba(255,255,255,.52); transition: color .3s ease; }
+      .site-nav--mobile a:hover { color: rgba(255,255,255,.95); }
     }
-    .brand-wordmark { height: 17px; filter: invert(1) brightness(1.06); opacity: .78; }
-    .site-nav { display: flex; gap: 28px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
-    .site-nav a { color: rgba(246,242,234,.45); transition: color .3s; }
-    .site-nav a:hover { color: rgba(246,242,234,.92); }
-    @media (max-width: 430px) { .site-nav { gap: 10px; font-size: 10px; } }
 
     /* ── PAGE HEADER ── */
+    /* ── HERO ROW: titolo + video affiancati ── */
+    .musings-hero {
+      display: flex;
+      align-items: stretch;
+      min-height: 260px;
+      overflow: hidden;
+      margin-top: 64px;
+    }
     .page-header {
-      padding: 116px clamp(18px, 5vw, 64px) 56px;
+      flex: 0 0 auto;
+      width: clamp(280px, 45vw, 520px);
+      padding: 48px clamp(18px, 5vw, 64px) 48px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
     }
     .page-eyebrow {
-      font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
+      font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
       color: var(--amber); margin-bottom: 14px; display: block;
     }
     .page-title {
-      font-size: clamp(42px, 7vw, 86px);
+      font-size: clamp(36px, 5vw, 72px);
       font-weight: 300; letter-spacing: -.045em; line-height: .92;
+    }
+    .page-title-row { display: flex; align-items: center; gap: 16px; }
+    .back-symbol {
+      display: inline-flex; align-items: center;
+      opacity: .38; animation: symbolGlow 5s ease-in-out infinite; transition: opacity .3s; flex-shrink: 0;
+    }
+    .back-symbol img { width: clamp(28px, 3.5vw, 46px); height: auto; display: block; }
+    .back-symbol:hover { opacity: .72; }
+    @keyframes symbolGlow {
+      0%, 100% { filter: drop-shadow(0 0 0px rgba(175,133,112,0)); opacity: .38; }
+      50%       { filter: drop-shadow(0 0 7px rgba(175,133,112,.65)); opacity: .55; }
     }
     .page-subtitle {
       margin-top: 18px; font-size: 14px;
-      color: rgba(246,242,234,.34); font-style: italic; font-weight: 300;
+      color: rgba(246,242,234,.34); font-style: italic; font-weight: 300; letter-spacing: .10em;
     }
 
+    /* ── VIDEO affiancato a destra ── */
+    .musings-video-wrap {
+      flex: 1 1 auto;
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+    }
+    .musings-video-poster,
+    .musings-video {
+      position: absolute;
+      inset: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .musings-video-poster { z-index: 1; transition: opacity .8s ease; }
+    .musings-video-poster.hidden { opacity: 0; }
+    .musings-video { z-index: 2; filter: saturate(.65) brightness(.78); }
+    /* scrim: sfuma verso sinistra e in basso */
+    .musings-video-wrap::after {
+      content: ''; position: absolute; inset: 0; z-index: 3;
+      background:
+        linear-gradient(90deg, var(--bg) 0%, rgba(13,13,13,.55) 22%, transparent 55%),
+        linear-gradient(180deg, transparent 55%, rgba(13,13,13,.45) 100%);
+      pointer-events: none;
+    }
     .divider { height: 1px; background: var(--line); margin: 0 clamp(18px, 5vw, 64px); }
+    @media (max-width: 640px) {
+      .musings-hero { flex-direction: column; margin-top: 80px; }
+      .page-header { width: 100%; padding-bottom: 20px; }
+      .musings-video-wrap { height: 200px; min-height: unset; flex: 0 0 auto; }
+      .musings-video-wrap::after {
+        background: linear-gradient(180deg, var(--bg) 0%, transparent 25%, transparent 70%, rgba(13,13,13,.5) 100%);
+      }
+    }
 
     /* ── MUSINGS LIST ── */
     .musings-list {
@@ -168,9 +224,27 @@
       font-size: clamp(18px, 2.2vw, 26px);
       font-weight: 300; letter-spacing: -.02em; line-height: 1.2;
       margin-bottom: 18px; max-width: 520px;
-      cursor: pointer; transition: color .3s;
+      cursor: pointer; transition: color .3s, transform .4s cubic-bezier(.16,1,.3,1);
     }
     .musing-title:hover { color: rgba(246,242,234,.62); }
+    .musing-entry:hover .musing-title { transform: translateX(5px); }
+
+    /* separatore animato — la linea in fondo scorre in ambra sull'hover */
+    .musing-entry {
+      position: relative;
+    }
+    .musing-entry::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--amber);
+      transition: width .6s cubic-bezier(.16,1,.3,1);
+      opacity: .5;
+    }
+    .musing-entry:hover::after {
+      width: 100%;
+    }
 
     .musing-body {
       font-size: 15px; line-height: 1.92;
@@ -209,20 +283,18 @@
     /* Mobile: data in riga */
     @media (max-width: 600px) {
       .musing-entry {
-        grid-template-columns: 1fr;
-        gap: 0;
+        grid-template-columns: 48px 1fr;
+        grid-template-areas: "date content";
+        gap: 0 20px;
       }
+      .musing-ghost { display: none; }
       .musing-datecol {
-        flex-direction: row;
-        align-items: baseline;
-        gap: 8px;
-        margin-bottom: 14px;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
       }
-        writing-mode: horizontal-tb;
-        transform: none;
-        font-size: 9px;
-      }
-      .musing-day { font-size: 16px; }
+      .musing-day { font-size: 18px; }
+      .musing-month { font-size: 9px; }
     }
 
     /* ── FOOTER ── */
@@ -243,24 +315,45 @@
 <body>
 
   <header class="site-header">
-    <a href="../index.html">
+    <a href="../index.html" class="brand" aria-label="Max Minninna home">
       <img src="../assets/mmlogo_250.svg" alt="Max Minninna" class="brand-wordmark" />
     </a>
-    <nav class="site-nav">
+    <nav class="site-nav site-nav--desktop">
       <a href="../index.html#latest">Latest</a>
+      <a href="../index.html#topshots">Popular</a>
       <a href="../index.html#selected">Collections</a>
       <a href="../index.html#archive">Portfolio</a>
+      <a href="../index.html#bio">MM</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <nav class="site-nav site-nav--mobile">
+      <a href="../index.html#latest">New</a>
+      <a href="../index.html#topshots">Pop</a>
+      <a href="../index.html#selected">Collections</a>
+      <a href="../index.html#bio">MM</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
   </header>
 
-  <div class="page-header">
-    <span class="page-eyebrow">Max Minninna</span>
-    <h1 class="page-title">My Musings</h1>
-    <p class="page-subtitle">Photos with no camera.</p>
-  </div>
+  <div class="musings-hero">
+    <div class="page-header">
+      <span class="page-eyebrow">A space to think out loud</span>
+      <div class="page-title-row">
+        <h1 class="page-title">My Musings</h1>
+        <a href="../index.html#bio" class="back-symbol" title="Back to MM" aria-label="Back to MM">
+          <img src="../assets/M symbol 3.svg" alt="" />
+        </a>
+      </div>
+      <p class="page-subtitle">Taking pictures without a camera first.</p>
+    </div>
 
-  <div class="divider"></div>
+    <div class="musings-video-wrap">
+      <img src="assets/musings_hand_writing.jpg" alt="" class="musings-video-poster" id="musingsPoster" />
+      <video class="musings-video" id="musingVideo" autoplay muted loop playsinline poster="assets/musings_hand_writing.jpg">
+        <source src="assets/musings_hand_writing.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
 
   <main class="musings-list" id="musingsList">
     <p class="musings-loading" id="loadingState">—</p>
@@ -273,5 +366,15 @@
   </footer>
 
   <script src="musings.js"></script>
+  <script>
+    // Nascondi il poster quando il video è pronto
+    const video = document.getElementById('musingVideo');
+    const poster = document.getElementById('musingsPoster');
+    if (video && poster) {
+      video.addEventListener('canplay', () => {
+        poster.classList.add('hidden');
+      });
+    }
+  </script>
 </body>
 </html>

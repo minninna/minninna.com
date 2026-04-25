@@ -1,5 +1,5 @@
 // AUTO-GENERATED — non modificare manualmente.
-// Rigenera con doppio clic su update_musings.sh (Mac) o update_musings.bat (Windows)
+// Rigenera con doppio clic su update_musings.bat
 
 const MUSINGS = [
   {
@@ -23,9 +23,9 @@ const MUSINGS = [
     content: `Se qualcuno è in grado di mostrarmi che quello che penso o faccio non è giusto, cambierò volentieri, perché cerco la verità, dalla quale nessuno è mai stato veramente ferito. È la persona che continua a ingannare se stessa e a ignorare se stessa, che viene danneggiata.\n\nMarco Aurelio`
   },
   {
-    date: '20260410',
-    title: 'il testo che mancava',
-    content: `Se vuoi dire la verità alla gente, falla ridere altrimenti ti uccideranno.\n\nO. Wilde`
+    date: '20260425',
+    title: 'A free space',
+    content: `This space sits next to the photographs.\n\nIf the rest of the site is made of images taken with a camera, this is where the images without a camera live. Because photography, at least to me, does not begin with a device. It begins with observation. With the quiet act of noticing. You can photograph with a lens, or you can photograph without one, by paying attention, by staying with what is in front of you long enough for it to reveal something.\n\nMy Musings is that second space. A private area. A kind of notebook. Open, unfinished by design.\n\nSome entries might be fragments. Others might remain drafts. Observations caught in passing. Small anecdotes, almost like those curious pieces you find in old magazines. Thoughts on how things shift, culturally, socially, individually. Reflections that move between the personal and the collective, between what we are becoming and what we might be leaving behind.\n\nNothing here is meant to be definitive. This is a place for notes, not statements. For questions more than answers. For thinking in public without the need to conclude.\n\nA free space.\n\nIt does not feel accidental that it begins today, on a day that here carries the meaning of freedom. Not only as a historical moment, but as a principle. A reminder.\n\nSo this will be that. A small exercise in freedom. To observe. To write. To leave things open.`
   },
 ];
 
@@ -50,9 +50,9 @@ function renderMusings() {
     const mo = m.date.slice(4,6);
     const d  = m.date.slice(6,8);
     const dateObj = new Date(`${y}-${mo}-${d}`);
-    const day     = d;
-    const month   = dateObj.toLocaleDateString('en-GB', { month: 'short' }).toUpperCase();
-    const title   = m.title.charAt(0).toUpperCase() + m.title.slice(1);
+    const day   = d;
+    const month = dateObj.toLocaleDateString('en-GB', { month: 'short' }).toUpperCase();
+    const title = m.title.charAt(0).toUpperCase() + m.title.slice(1);
 
     const entry = document.createElement('article');
     entry.className = 'musing-entry';
@@ -93,7 +93,6 @@ function renderMusings() {
     inkObserver.observe(entry);
   });
 
-  // Fallback per file://
   setTimeout(() => {
     document.querySelectorAll('.musing-entry:not(.ink-visible)').forEach((el, i) => {
       setTimeout(() => el.classList.add('ink-visible'), i * 80);

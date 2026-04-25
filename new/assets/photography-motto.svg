@@ -1,0 +1,28 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .testo { 
+      fill: white; 
+      font-family: 'Helvetica', 'Arial', sans-serif; 
+      font-style: italic; 
+      font-size: 38px; 
+      text-anchor: middle; 
+    }
+    .virgolette { 
+      fill: #666666; 
+      font-family: 'Georgia', serif; 
+      font-size: 80px; 
+    }
+  </style>
+
+  <text x="100" y="120" class="virgolette">“</text>
+
+  <text x="400" y="160" class="testo">Photography</text>
+  <text x="400" y="225" class="testo">teaches us</text>
+  <text x="400" y="290" class="testo">to observe</text>
+
+  <text x="400" y="400" class="testo">revealing</text>
+  <text x="400" y="465" class="testo">a world we never</text>
+  <text x="400" y="530" class="testo">knew existed</text>
+
+  <text x="650" y="560" class="virgolette">”</text>
+</svg>

@@ -428,6 +428,12 @@
       text-transform: uppercase; color: rgba(246,242,234,.24); transition: color .25s;
     }
     .footer-back:hover { color: var(--amber); }
+  
+    /* force read more visible */
+    .musing-toggle {
+      display: inline-flex !important;
+    }
+
   </style>
 </head>
 <body>
@@ -499,5 +505,49 @@
       });
     }
   </script>
+  <script>
+    // Read more sempre visibile
+    (function () {
+      function ensureReadMoreButtons() {
+        document.querySelectorAll('.musing-entry').forEach(entry => {
+          const body = entry.querySelector('.musing-body');
+          if (!body) return;
+
+          let toggle = entry.querySelector('.musing-toggle');
+          if (!toggle) {
+            toggle = document.createElement('button');
+            toggle.className = 'musing-toggle';
+            toggle.type = 'button';
+            toggle.innerHTML = '<span>see more</span><span class="musing-toggle-arrow"></span>';
+            body.insertAdjacentElement('afterend', toggle);
+
+            toggle.addEventListener('click', () => {
+              entry.classList.toggle('expanded');
+              const label = toggle.querySelector('span');
+              if (label) label.textContent = entry.classList.contains('expanded') ? 'see less' : 'see more';
+            });
+          } else {
+            toggle.hidden = false;
+            toggle.style.display = 'inline-flex';
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', ensureReadMoreButtons);
+      window.addEventListener('load', ensureReadMoreButtons);
+      setTimeout(ensureReadMoreButtons, 100);
+      setTimeout(ensureReadMoreButtons, 400);
+      setTimeout(ensureReadMoreButtons, 1000);
+
+      const list = document.getElementById('musingsList');
+      if (list) {
+        new MutationObserver(ensureReadMoreButtons).observe(list, {
+          childList: true,
+          subtree: true
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>

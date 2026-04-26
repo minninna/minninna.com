@@ -1,16 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Musings — Max Minninna</title>
-  <meta name="description" content="Photos with no camera. Observations and fragments by Max Minninna." />
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/svg+xml" href="../assets/M symbol 3.svg" />
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JT8JCZRDM"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Musings — Max Minninna</title>
+<meta content="Photos with no camera. Observations and fragments by Max Minninna." name="description"/>
+<meta content="noindex, nofollow" name="robots"/>
+<link href="../assets/M symbol 3.svg" rel="icon" type="image/svg+xml"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3JT8JCZRDM"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -20,7 +20,7 @@
       send_page_view: true
     });
   </script>
-  <style>
+<style>
     :root {
       --bg:    #0b0b0b;
       --text:  #f6f2ea;
@@ -453,68 +453,337 @@
     .musings-hero:hover .musings-video {
       filter: saturate(.8) brightness(.85);
     }
+
+
+/* ── MUSINGS LOGO REFINEMENT ── */
+.musings-logo-row {
+  display: block;
+}
+
+.musings-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+  margin: 0;
+  color: var(--text);
+}
+
+.musings-logo-enter {
+  display: block;
+  margin: 0 0 clamp(5px, .55vw, 8px);
+  font-size: clamp(9px, .8vw, 11px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(246,242,234,.42);
+}
+
+.musings-logo-main {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(36px, 5.15vw, 74px);
+  line-height: .86;
+  font-weight: 200;
+  letter-spacing: -.068em;
+  color: rgba(246,242,234,.92);
+}
+
+.musings-logo-main .mm {
+  font-weight: 520;
+  letter-spacing: -.075em;
+}
+
+.musings-word-gap {
+  display: inline-block;
+  width: .10em;
+}
+
+.musings-logo-sub {
+  display: inline-block;
+  margin-top: clamp(7px, .75vw, 11px);
+  font-size: clamp(9px, .78vw, 11px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: rgba(175,133,112,.66);
+  white-space: nowrap;
+}
+
+.page-subtitle {
+  max-width: 420px;
+}
+
+/* desktop balance: lascia aria al video e impedisce collisioni */
+@media (min-width: 641px) {
+  .page-header {
+    flex-basis: min(44vw, 560px);
+  }
+}
+
+/* tablet */
+@media (max-width: 900px) and (min-width: 641px) {
+  .page-header {
+    flex: 0 0 48vw;
+    padding-right: clamp(18px, 3vw, 36px);
+  }
+
+  .musings-logo-main {
+    font-size: clamp(34px, 5.6vw, 58px);
+  }
+}
+
+/* mobile: logo più compatto, niente tracking enorme ereditato dal vecchio title */
+@media (max-width: 640px) {
+  .page-title {
+    letter-spacing: 0;
+  }
+
+  .page-header {
+    padding-top: 18px;
+    padding-bottom: 22px;
+  }
+
+  .musings-logo-main {
+    font-size: clamp(38px, 12vw, 54px);
+    letter-spacing: -.072em;
+  }
+
+  .musings-logo-main .mm {
+    font-weight: 520;
+  }
+
+  .musings-word-gap {
+    width: .08em;
+  }
+
+  .musings-logo-sub {
+    margin-top: 8px;
+    font-size: 9px;
+  }
+
+  .page-subtitle {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.5;
+    max-width: 300px;
+  }
+}
+
+/* very small phones */
+@media (max-width: 380px) {
+  .musings-logo-main {
+    font-size: clamp(34px, 11.4vw, 44px);
+  }
+
+  .musings-logo-enter,
+  .musings-logo-sub {
+    font-size: 8.5px;
+  }
+
+  .back-to-mm {
+    padding-top: 14px;
+  }
+
+  .site-nav--mobile {
+    gap: 8px;
+    font-size: 10.5px;
+  }
+}
+
+/* tweaks v2 */
+.musings-logo-sub{
+  font-size: clamp(10px, .95vw, 13px);
+}
+
+.page-eyebrow{
+  display:inline-block;
+  max-width:100%;
+}
+
+.page-subtitle{
+  display:inline-block;
+  max-width:100%;
+  font-size: clamp(10px, .9vw, 12px);
+}
+
+
+/* --- hierarchy inversion --- */
+
+/* make DAILY DARKROOM stronger */
+.musings-logo-sub{
+  font-size: clamp(12px, 1.1vw, 16px);
+  letter-spacing: 0;
+  color: rgba(246,242,234,.85);
+}
+
+/* make eyebrow lighter */
+.page-eyebrow{
+  font-size: clamp(9px, .7vw, 10px);
+  color: rgba(246,242,234,.38);
+}
+
+/* subtitle lighter + spaced */
+.page-subtitle{
+  font-size: clamp(9px, .7vw, 11px);
+  letter-spacing: .12em;
+  color: rgba(246,242,234,.32);
+}
+
+
+/* FIX weight + eyebrow */
+
+/* force thin logo */
+.musings-logo-main{
+  font-weight: 200 !important;
+}
+.musings-logo-main .mm{
+  font-weight: 400 !important;
+}
+
+/* restore eyebrow amber */
+.page-eyebrow{
+  color: var(--amber) !important;
+}
+
+
+/* FIX weights correctly */
+
+/* main logo thinner */
+.musings-logo-main{
+  font-weight: 200 !important;
+}
+
+/* MM stronger than rest */
+.musings-logo-main .mm{
+  font-weight: 600 !important;
+}
+
+/* fix eyebrow size/air */
+.page-eyebrow{
+  font-size: clamp(10px, .9vw, 12px);
+  letter-spacing: .28em;
+}
+
+
+/* FORCE thinner logo correctly */
+.musings-logo-main{
+  font-weight: 100 !important;
+}
+.musings-logo-main .mm{
+  font-weight: 500 !important;
+}
+
+/* subtitle spacing + no dot handled in HTML */
+.page-subtitle{
+  letter-spacing: .16em;
+}
+
+/* fix video crop: increase hero height */
+.musings-hero{
+  align-items: stretch;
+  min-height: 420px;
+}
+
+.musings-video-wrap{
+  min-height: 420px;
+}
+
+/* FINAL thin fix */
+.musings-logo-main{
+  font-weight: 200 !important;
+  letter-spacing: -0.085em;
+}
+
+.musings-logo-main .mm{
+  font-weight: 500 !important;
+  letter-spacing: -0.09em;
+}
+
+/* REAL THIN FIX */
+.musings-logo-main{
+  font-weight: 200 !important;
+  font-variation-settings: "wght" 200;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.musings-logo-main .mm{
+  font-weight: 500 !important;
+  font-variation-settings: "wght" 500;
+}
+
+/* EYEBROW + SUBTITLE FINAL */
+.page-eyebrow {
+  font-size: clamp(9px, .8vw, 11px) !important;
+  letter-spacing: .42em !important;
+  color: var(--amber) !important;
+  font-weight: 300 !important;
+  text-transform: uppercase;
+}
+
+.page-subtitle {
+  font-size: clamp(12px, 1.1vw, 15px) !important;
+  letter-spacing: .22em !important;
+  color: rgba(246,242,234,.38) !important;
+  font-style: italic;
+  font-weight: 300;
+}
 </style>
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&amp;display=swap" rel="stylesheet"/></head>
 <body>
-
-  <header class="site-header">
-    <a href="../index.html" class="brand" aria-label="Max Minninna home">
-      <img src="../assets/mmlogo_250.svg" alt="Max Minninna" class="brand-wordmark" />
-    </a>
-    <nav class="site-nav site-nav--desktop">
-      <a href="../index.html#latest">Latest</a>
-      <a href="../index.html#topshots">Popular</a>
-      <a href="../index.html#selected">Collections</a>
-      <a href="../index.html#archive">Portfolio</a>
-      <a href="../index.html#bio">MM</a>
-      <a href="../index.html#contact">Contact</a>
-    </nav>
-    <nav class="site-nav site-nav--mobile">
-      <a href="../index.html#latest">New</a>
-      <a href="../index.html#topshots">Pop</a>
-      <a href="../index.html#selected">Collections</a>
-      <a href="../index.html#bio">MM</a>
-      <a href="../index.html#contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- back to MM bar -->
-  <div class="back-to-mm">
-    <a href="../index.html#bio" class="back-to-mm-link" aria-label="Back to MM">
-      <span class="back-arrow">←</span>
-      <span class="back-label">Back to MM</span>
-    </a>
-  </div>
-
-  <div class="musings-hero">
-    <div class="page-header">
-      <span class="page-eyebrow">A space to think out loud</span>
-      <div class="page-title-row">
-        <h1 class="page-title">My Musings<br><em class="title-darkroom">The Daily Darkroom</em></h1>
-      </div>
-      <p class="page-subtitle">Taking pictures without a camera first.</p>
-    </div>
-
-    <div class="musings-video-wrap">
-      <img src="assets/musings_hand_writing.jpg" alt="" class="musings-video-poster" id="musingsPoster" />
-      <video class="musings-video" id="musingVideo" autoplay muted loop playsinline poster="assets/musings_hand_writing.jpg">
-        <source src="assets/musings_hand_writing.mp4" type="video/mp4" />
-      </video>
-    </div>
-  </div>
-
-  <main class="musings-list" id="musingsList">
-    <p class="musings-loading" id="loadingState">—</p>
-  </main>
-
-  <footer class="site-footer">
-    <img src="../assets/M symbol 3.svg" alt="" class="footer-symbol" />
-    <p class="footer-copy">© 2026 Max Minninna</p>
-    <a href="../index.html" class="footer-back">← Portfolio</a>
-  </footer>
-
-  <script src="musings.js"></script>
-  <script>
+<header class="site-header">
+<a aria-label="Max Minninna home" class="brand" href="../index.html">
+<img alt="Max Minninna" class="brand-wordmark" src="../assets/mmlogo_250.svg"/>
+</a>
+<nav class="site-nav site-nav--desktop">
+<a href="../index.html#latest">Latest</a>
+<a href="../index.html#topshots">Popular</a>
+<a href="../index.html#selected">Collections</a>
+<a href="../index.html#archive">Portfolio</a>
+<a href="../index.html#bio">MM</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<nav class="site-nav site-nav--mobile">
+<a href="../index.html#latest">New</a>
+<a href="../index.html#topshots">Pop</a>
+<a href="../index.html#selected">Collections</a>
+<a href="../index.html#bio">MM</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+</header>
+<!-- back to MM bar -->
+<div class="back-to-mm">
+<a aria-label="Back to MM" class="back-to-mm-link" href="../index.html#bio">
+<span class="back-arrow">←</span>
+<span class="back-label">Back to MM</span>
+</a>
+</div>
+<div class="musings-hero">
+<div class="page-header">
+<span class="page-eyebrow" id="musingsEyebrow">A space to think out loud</span>
+<div class="page-title-row musings-logo-row"><h1 aria-label="My Musings — The Daily Darkroom" class="musings-logo"><span class="musings-logo-main" id="musingsLogoMain"><span class="mm">M</span>y<span class="musings-word-gap"> </span><span class="mm">M</span>usings</span><span class="musings-logo-sub" id="musingsLogoSub">the daily darkroom</span></h1></div>
+<p class="page-subtitle" id="musingsSubtitle">Taking pictures without a camera first</p>
+</div>
+<div class="musings-video-wrap">
+<img alt="" class="musings-video-poster" id="musingsPoster" src="assets/musings_hand_writing.jpg"/>
+<video autoplay="" class="musings-video" id="musingVideo" loop="" muted="" playsinline="" poster="assets/musings_hand_writing.jpg">
+<source src="assets/musings_hand_writing.mp4" type="video/mp4"/>
+</video>
+</div>
+</div>
+<main class="musings-list" id="musingsList">
+<p class="musings-loading" id="loadingState">—</p>
+</main>
+<footer class="site-footer">
+<img alt="" class="footer-symbol" src="../assets/M symbol 3.svg"/>
+<p class="footer-copy">© 2026 Max Minninna</p>
+<a class="footer-back" href="../index.html">← Portfolio</a>
+</footer>
+<script src="musings.js"></script>
+<script>
     // Nascondi il poster quando il video è pronto
     const video = document.getElementById('musingVideo');
     const poster = document.getElementById('musingsPoster');
@@ -524,7 +793,7 @@
       });
     }
   </script>
-  <script>
+<script>
     // Read more sempre visibile
     (function () {
       function ensureReadMoreButtons() {
@@ -541,9 +810,17 @@
             body.insertAdjacentElement('afterend', toggle);
 
             toggle.addEventListener('click', () => {
-              entry.classList.toggle('expanded');
+              const expanded = entry.classList.toggle('expanded');
               const label = toggle.querySelector('span');
-              if (label) label.textContent = entry.classList.contains('expanded') ? 'see less' : 'see more';
+              if (label) label.textContent = expanded ? 'see less' : 'see more';
+              if (expanded && typeof gtag === 'function') {
+                const titleEl = entry.querySelector('.musing-title');
+                const musingTitle = titleEl ? titleEl.textContent.trim() : '';
+                gtag('event', 'musing_open', {
+                  musing_title: musingTitle,
+                  event_label: musingTitle
+                });
+              }
             });
           } else {
             toggle.hidden = false;
@@ -567,6 +844,56 @@
       }
     })();
   </script>
+<script>
+(function () {
+  function fitMusingsLogoSubtitle() {
+    const main = document.getElementById("musingsLogoMain");
+    const sub = document.getElementById("musingsLogoSub");
+    if (!main || !sub) return;
 
-</body>
+    sub.style.letterSpacing = "0px";
+    sub.style.width = "auto";
+
+    const mainWidth = main.getBoundingClientRect().width;
+    const subWidth = sub.getBoundingClientRect().width;
+    const textLength = sub.textContent.trim().length;
+
+    if (mainWidth > subWidth && textLength > 1) {
+      const spacing = (mainWidth - subWidth) / (textLength - 1);
+      sub.style.letterSpacing = spacing + "px";
+    }
+  }
+
+  window.addEventListener("load", fitMusingsLogoSubtitle);
+  window.addEventListener("resize", fitMusingsLogoSubtitle);
+  document.addEventListener("DOMContentLoaded", fitMusingsLogoSubtitle);
+  setTimeout(fitMusingsLogoSubtitle, 100);
+  setTimeout(fitMusingsLogoSubtitle, 500);
+})();
+</script><script>
+(function(){
+function fitAll(){
+  const main=document.getElementById('musingsLogoMain');
+  const sub=document.getElementById('musingsLogoSub');
+  const eyebrow=document.getElementById('musingsEyebrow');
+  const subtitle=document.getElementById('musingsSubtitle');
+  if(!main) return;
+  const w=main.getBoundingClientRect().width;
+
+  [sub,eyebrow,subtitle].forEach(el=>{
+    if(!el) return;
+    el.style.letterSpacing='0px';
+    const txt=el.textContent.trim().length;
+    const sw=el.getBoundingClientRect().width;
+    if(w>sw && txt>1){
+      const sp=(w-sw)/(txt-1);
+      el.style.letterSpacing=sp+'px';
+    }
+  });
+}
+window.addEventListener('load',fitAll);
+window.addEventListener('resize',fitAll);
+setTimeout(fitAll,200);
+})();
+</script></body>
 </html>

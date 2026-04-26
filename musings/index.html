@@ -59,70 +59,66 @@
     /* ── PAGE HEADER ── */
     /* ── BACK TO MM BAR ── */
     .back-to-mm {
-      padding: 14px clamp(18px, 5vw, 64px) 0;
+      padding: 18px clamp(18px, 5vw, 64px) 0;
+      display: flex; align-items: center;
     }
     .back-to-mm-link {
-      display: inline-flex; align-items: center; gap: 10px;
-      color: rgba(246,242,234,.28);
-      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
-      transition: color .3s;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 12px;
+      color: rgba(246,242,234,.55);
+      font-size: 12px; letter-spacing: .14em; font-weight: 300;
+      transition: color .3s; text-decoration: none;
     }
-    .back-to-mm-link:hover { color: var(--amber); }
+    .back-to-mm-link:hover { color: rgba(246,242,234,.92); }
     .back-arrow {
-      font-size: 16px; line-height: 1;
-      transition: transform .3s;
-      display: inline-block;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      border: 1px solid rgba(246,242,234,.22);
+      border-radius: 50%;
+      font-size: 14px; line-height: 1;
+      transition: border-color .3s, transform .3s;
     }
-    .back-to-mm-link:hover .back-arrow { transform: translateX(-3px); }
-    .back-label { font-weight: 300; }
-    .back-msymbol {
-      width: max(18px, 2vw); height: auto;
-      opacity: .4;
-      transition: opacity .3s;
-      animation: symbolGlow 5s ease-in-out infinite;
+    .back-to-mm-link:hover .back-arrow {
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translateX(-3px);
     }
-    .back-to-mm-link:hover .back-msymbol { opacity: .7; }
+    .back-label { letter-spacing: .12em; }
 
-    /* ── SHIMMER sul ghost title ── */
+    /* ── GHOST title + shimmer ── */
     .musing-ghost {
       align-self: center;
       font-size: clamp(48px, 7vw, 96px);
       font-weight: 700;
       letter-spacing: -.06em;
-      line-height: 1;
+      line-height: 1.2;
       color: rgba(246,242,234,.055);
       pointer-events: none;
       user-select: none;
       white-space: nowrap;
-      filter: blur(3px);
-      transition: filter .8s ease;
       padding-right: 8px;
+      padding-bottom: .1em;
       position: relative;
       overflow: hidden;
+      filter: blur(3px);
+      transition: color .8s ease, filter .8s ease;
     }
     .musing-entry:hover .musing-ghost {
+      overflow: hidden;
+      position: relative;
       filter: blur(0px);
+      color: rgba(246,242,234,.072);
     }
-    /* shimmer sweep — una luce che scorre da sx a dx sull'hover */
-    .musing-ghost::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%; width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(175,133,112,.18), transparent);
-      transition: none;
-    }
-    .musing-entry:hover .musing-ghost::after {
-      animation: ghostShimmer 1.2s ease forwards;
-    }
-    @keyframes ghostShimmer {
-      from { left: -60%; }
-      to   { left: 160%; }
+    /* fascio di luce — mix-blend-mode:overlay lo fa interagire con le lettere */
+    .musing-entry:hover
+    @keyframes ghostBeam {
+      0%   { opacity:0; background-position: -100% 0; background: linear-gradient(90deg, transparent 0%, transparent 30%, rgba(255,220,180,.5) 40%, rgba(255,220,180,.5) 48%, transparent 58%, transparent 100%); background-size: 200% 100%; }
+      5%   { opacity:1; }
+      100% { opacity:0; background: linear-gradient(90deg, transparent 0%, transparent 80%, rgba(255,220,180,.5) 90%, rgba(255,220,180,.5) 98%, transparent 100%); }
     }
     .musings-hero {
       display: flex;
       align-items: stretch;
-      margin-top: 64px;
+      margin-top: 28px;
     }
     .page-header {
       flex: 0 0 44vw;
@@ -225,7 +221,9 @@
     }
     .musing-datecol  { grid-area: date; }
     .musing-content  { grid-area: content; }
-    .musing-ghost    { grid-area: ghost; }
+    .musing-ghost    {
+      overflow: hidden;
+      position: relative; grid-area: ghost; }
 
     /* G — linea ambra verticale sul bordo sinistro */
     .musing-entry::before {
@@ -242,6 +240,8 @@
 
     /* ghost title — colonna destra, blur/focus sull'hover */
     .musing-ghost {
+      overflow: hidden;
+      position: relative;
       align-self: center;
       font-size: clamp(48px, 7vw, 96px);
       font-weight: 700;
@@ -256,12 +256,43 @@
       padding-right: 8px;
     }
     .musing-entry:hover .musing-ghost {
+      overflow: hidden;
+      position: relative;
       color: rgba(175,133,112,.10);
       filter: blur(0px);
     }
+
+    /* shimmer sweep — sx → dx, confinato al ghost title */
+    .musing-ghost::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(175,133,112,.18), transparent);
+      transform: translateX(-130%);
+      opacity: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .musing-entry:hover .musing-ghost::after {
+      animation: ghostShimmer 1.2s ease forwards;
+    }
+
+    @keyframes ghostShimmer {
+      0%   { transform: translateX(-130%); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateX(270%); opacity: 0; }
+    }
+
     /* nascosto su mobile */
     @media (max-width: 768px) {
-      .musing-ghost { display: none; }
+      .musing-ghost {
+      overflow: hidden;
+      position: relative; display: none; }
       .musing-entry {
         grid-template-columns: 48px 1fr;
         grid-template-areas: "date content";
@@ -372,7 +403,9 @@
         grid-template-areas: "date content";
         gap: 0 20px;
       }
-      .musing-ghost { display: none; }
+      .musing-ghost {
+      overflow: hidden;
+      position: relative; display: none; }
       .musing-datecol {
         flex-direction: column;
         align-items: center;
@@ -424,8 +457,7 @@
   <div class="back-to-mm">
     <a href="../index.html#bio" class="back-to-mm-link" aria-label="Back to MM">
       <span class="back-arrow">←</span>
-      <span class="back-label">MM</span>
-      <img src="../assets/M symbol 3.svg" alt="" class="back-msymbol" />
+      <span class="back-label">Back to MM</span>
     </a>
   </div>
 

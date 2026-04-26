@@ -44,79 +44,79 @@
     }
 
     /* ── PAGE HEADER ── */
-    /* ── HERO ROW: titolo + video affiancati ── */
+    /* ── HERO: flex row, testo sx video dx ── */
     .musings-hero {
       display: flex;
       align-items: stretch;
-      min-height: 260px;
-      overflow: hidden;
       margin-top: 64px;
     }
     .page-header {
-      flex: 0 0 auto;
-      width: clamp(280px, 45vw, 520px);
-      padding: 48px clamp(18px, 5vw, 64px) 48px;
+      flex: 0 0 44vw;
+      min-width: 240px;
+      padding: clamp(32px, 4vw, 64px) clamp(18px, 5vw, 64px);
       display: flex; flex-direction: column; justify-content: center;
-      position: relative; z-index: 2;
     }
     .page-eyebrow {
-      font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
-      color: var(--amber); margin-bottom: 14px; display: block;
+      font-size: max(9px, 1.1vw); letter-spacing: .32em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 1.2vw; display: block;
     }
     .page-title {
-      font-size: clamp(36px, 5vw, 72px);
-      font-weight: 300; letter-spacing: -.045em; line-height: .92;
+      font-size: max(26px, 4.2vw);
+      font-weight: 300; letter-spacing: .04em; line-height: 1;
     }
-    .page-title-row { display: flex; align-items: center; gap: 16px; }
+    .page-title-row { display: flex; align-items: center; gap: max(8px, 1.2vw); }
     .back-symbol {
-      display: inline-flex; align-items: center;
-      opacity: .38; animation: symbolGlow 5s ease-in-out infinite; transition: opacity .3s; flex-shrink: 0;
+      display: inline-flex; align-items: center; flex-shrink: 0;
+      opacity: .38; animation: symbolGlow 5s ease-in-out infinite; transition: opacity .3s;
     }
-    .back-symbol img { width: clamp(28px, 3.5vw, 46px); height: auto; display: block; }
+    .back-symbol img { width: max(20px, 2.8vw); height: auto; display: block; }
     .back-symbol:hover { opacity: .72; }
     @keyframes symbolGlow {
       0%, 100% { filter: drop-shadow(0 0 0px rgba(175,133,112,0)); opacity: .38; }
       50%       { filter: drop-shadow(0 0 7px rgba(175,133,112,.65)); opacity: .55; }
     }
     .page-subtitle {
-      margin-top: 18px; font-size: 14px;
+      margin-top: max(12px, 1.4vw); font-size: max(11px, 1.1vw);
       color: rgba(246,242,234,.34); font-style: italic; font-weight: 300; letter-spacing: .10em;
     }
 
-    /* ── VIDEO affiancato a destra ── */
+    /* ── VIDEO a destra ── */
     .musings-video-wrap {
       flex: 1 1 auto;
       position: relative;
       overflow: hidden;
-      min-height: 260px;
     }
     .musings-video-poster,
     .musings-video {
       position: absolute;
       inset: 0; width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 30%;
+      object-position: center 35%;
     }
     .musings-video-poster { z-index: 1; transition: opacity .8s ease; }
     .musings-video-poster.hidden { opacity: 0; }
-    .musings-video { z-index: 2; filter: saturate(.75) brightness(.92); }
-    /* scrim: sfuma sui 4 bordi dal colore sfondo #141414 */
+    .musings-video { z-index: 2; filter: saturate(.82) brightness(.94); }
+    /* scrim sui 4 bordi — sinistra più densa per raccordarsi col testo */
     .musings-video-wrap::after {
       content: ''; position: absolute; inset: 0; z-index: 3;
       background:
-        linear-gradient(90deg,  #141414 0%, rgba(20,20,20,.5) 12%, transparent 30%),
-        linear-gradient(270deg, #141414 0%, rgba(20,20,20,.5) 12%, transparent 30%),
-        linear-gradient(180deg, #141414 0%, rgba(20,20,20,.4) 10%, transparent 28%),
-        linear-gradient(0deg,   #141414 0%, rgba(20,20,20,.4) 10%, transparent 28%);
+        linear-gradient(90deg,  #141414 0%, rgba(20,20,20,.7) 18%, transparent 42%),
+        linear-gradient(270deg, #141414 0%, rgba(20,20,20,.35) 8%, transparent 22%),
+        linear-gradient(180deg, #141414 0%, rgba(20,20,20,.35) 8%, transparent 22%),
+        linear-gradient(0deg,   #141414 0%, rgba(20,20,20,.35) 8%, transparent 22%);
       pointer-events: none;
     }
     .divider { height: 1px; background: var(--line); margin: 0 clamp(18px, 5vw, 64px); }
     @media (max-width: 640px) {
       .musings-hero { flex-direction: column; margin-top: 80px; }
-      .page-header { width: 100%; padding-bottom: 20px; }
-      .musings-video-wrap { height: 200px; min-height: unset; flex: 0 0 auto; }
+      .page-header { width: 100%; padding-bottom: 28px; }
+      .musings-video-wrap { height: 200px; flex: 0 0 auto; }
       .musings-video-wrap::after {
-        background: linear-gradient(180deg, var(--bg) 0%, transparent 25%, transparent 70%, rgba(13,13,13,.5) 100%);
+        background:
+          linear-gradient(180deg, #141414 0%, rgba(20,20,20,.5) 14%, transparent 32%),
+          linear-gradient(0deg,   #141414 0%, rgba(20,20,20,.5) 14%, transparent 32%),
+          linear-gradient(90deg,  #141414 0%, rgba(20,20,20,.3) 8%, transparent 20%),
+          linear-gradient(270deg, #141414 0%, rgba(20,20,20,.3) 8%, transparent 20%);
       }
     }
 

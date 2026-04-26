@@ -759,23 +759,7 @@ BIO SECTION — FIXED LAYOUT & TYPOGRAPHY
   font-size: clamp(32px, 4.5vw, 56px); font-weight: 300;
   letter-spacing: -.04em; color: var(--text); margin: 0; line-height: .96;
 }
-/* link My Musings nella sezione MM */
-.musings-link {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 11px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(246,242,234,.36);
-  font-weight: 400;
-  transition: color .3s;
-  border-bottom: 1px solid rgba(175,133,112,0);
-  padding-bottom: 2px;
-}
-.musings-link:hover {
-  color: var(--amber);
-  border-bottom-color: rgba(175,133,112,.4);
-}
+/* .musings-link rimosso da qui — stili gestiti inline in index.html */
 
 .bio-columns {
   display: flex;

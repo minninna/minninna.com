@@ -261,8 +261,10 @@ function openLightbox(photo, list, showArrows) {
   if (typeof gtag === 'function') {
     gtag('event', 'photo_open', {
       photo_title: photo.title,
+      item_name: photo.title,
       event_category: photo.category || 'uncategorized',
-      event_label: photo.title
+      event_label: photo.title,
+      photo_category: photo.category || 'uncategorized'
     });
   }
 }

@@ -7,6 +7,19 @@
   <meta name="description" content="Photos with no camera. Observations and fragments by Max Minninna." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/svg+xml" href="../assets/M symbol 3.svg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JT8JCZRDM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3JT8JCZRDM', {
+      page_title: 'My Musings — Max Minninna',
+      page_location: window.location.href,
+      send_page_view: true
+    });
+  </script>
   <style>
     :root {
       --bg:    #0b0b0b;
@@ -44,7 +57,68 @@
     }
 
     /* ── PAGE HEADER ── */
-    /* ── HERO: flex row, testo sx video dx ── */
+    /* ── BACK TO MM BAR ── */
+    .back-to-mm {
+      padding: 14px clamp(18px, 5vw, 64px) 0;
+    }
+    .back-to-mm-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: rgba(246,242,234,.28);
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      transition: color .3s;
+      text-decoration: none;
+    }
+    .back-to-mm-link:hover { color: var(--amber); }
+    .back-arrow {
+      font-size: 16px; line-height: 1;
+      transition: transform .3s;
+      display: inline-block;
+    }
+    .back-to-mm-link:hover .back-arrow { transform: translateX(-3px); }
+    .back-label { font-weight: 300; }
+    .back-msymbol {
+      width: max(18px, 2vw); height: auto;
+      opacity: .4;
+      transition: opacity .3s;
+      animation: symbolGlow 5s ease-in-out infinite;
+    }
+    .back-to-mm-link:hover .back-msymbol { opacity: .7; }
+
+    /* ── SHIMMER sul ghost title ── */
+    .musing-ghost {
+      align-self: center;
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 700;
+      letter-spacing: -.06em;
+      line-height: 1;
+      color: rgba(246,242,234,.055);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      filter: blur(3px);
+      transition: filter .8s ease;
+      padding-right: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .musing-entry:hover .musing-ghost {
+      filter: blur(0px);
+    }
+    /* shimmer sweep — una luce che scorre da sx a dx sull'hover */
+    .musing-ghost::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(175,133,112,.18), transparent);
+      transition: none;
+    }
+    .musing-entry:hover .musing-ghost::after {
+      animation: ghostShimmer 1.2s ease forwards;
+    }
+    @keyframes ghostShimmer {
+      from { left: -60%; }
+      to   { left: 160%; }
+    }
     .musings-hero {
       display: flex;
       align-items: stretch;
@@ -66,9 +140,11 @@
     }
     .title-darkroom {
       font-style: italic;
-      font-size: .62em;
+      font-size: .58em;
       color: rgba(175,133,112,.72);
-      letter-spacing: .02em;
+      letter-spacing: .06em;
+      display: block;
+      margin-top: .2em;
     }
     .page-title-row { display: flex; align-items: center; gap: max(8px, 1.2vw); }
     .back-symbol {
@@ -101,7 +177,7 @@
     }
     .musings-video-poster { z-index: 1; transition: opacity .8s ease; }
     .musings-video-poster.hidden { opacity: 0; }
-    .musings-video { z-index: 2; filter: saturate(.82) brightness(.94); }
+    .musings-video { z-index: 2; filter: saturate(.78) brightness(.86); }
     /* scrim sui 4 bordi — sinistra più densa per raccordarsi col testo */
     .musings-video-wrap::after {
       content: ''; position: absolute; inset: 0; z-index: 3;
@@ -344,14 +420,20 @@
     </nav>
   </header>
 
+  <!-- back to MM bar -->
+  <div class="back-to-mm">
+    <a href="../index.html#bio" class="back-to-mm-link" aria-label="Back to MM">
+      <span class="back-arrow">←</span>
+      <span class="back-label">MM</span>
+      <img src="../assets/M symbol 3.svg" alt="" class="back-msymbol" />
+    </a>
+  </div>
+
   <div class="musings-hero">
     <div class="page-header">
       <span class="page-eyebrow">A space to think out loud</span>
       <div class="page-title-row">
-        <h1 class="page-title">My Musings <em class="title-darkroom">· The Daily Darkroom</em></h1>
-        <a href="../index.html#bio" class="back-symbol" title="Back to MM" aria-label="Back to MM">
-          <img src="../assets/M symbol 3.svg" alt="" />
-        </a>
+        <h1 class="page-title">My Musings<br><em class="title-darkroom">The Daily Darkroom</em></h1>
       </div>
       <p class="page-subtitle">Taking pictures without a camera first.</p>
     </div>

@@ -84,6 +84,12 @@ function renderMusings() {
         const expanded = entry.classList.toggle('expanded');
         toggle.setAttribute('aria-expanded', String(expanded));
         label.textContent = expanded ? 'Close' : 'Read more';
+        if (expanded && typeof gtag === 'function') {
+          gtag('event', 'musing_open', {
+            musing_title: m.title,
+            event_label: m.title
+          });
+        }
       };
       toggle.addEventListener('click', expand);
       entry.querySelector('.musing-title').addEventListener('click', expand);

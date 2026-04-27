@@ -308,7 +308,7 @@
 }
 
 
-/* FINAL FIX v2: no overlap desktop + keep background on mobile */
+
 #bio .bio-aside {
   display: grid !important;
   grid-template-rows: 1fr auto minmax(118px, 1fr) !important;
@@ -397,7 +397,7 @@
 }
 
 
-/* --- FIX v3 --- */
+
 
 /* DESKTOP: push musings slightly lower */
 #bio .bio-aside .musings-link {
@@ -445,7 +445,7 @@
 }
 
 
-/* FINAL CLEAN FIX */
+
 
 /* desktop spacing */
 #bio .bio-aside .musings-link {
@@ -487,31 +487,84 @@
   }
 }
 
-
-/* REAL DESKTOP SPACING: create actual vertical space inside the column */
+/* ===== Musings layout: single source of truth ===== */
+/* Base right column behavior */
+#bio .bio-aside {
+  position: relative;
+  overflow: visible;
+}
+/* Desktop: motto centered, musings lower and right */
 @media (min-width: 901px) {
   #bio .bio-aside {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 96px !important;
-    position: relative !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-
   #bio .bio-aside .bio-motto-wrap {
-    position: relative !important;
-    margin: 0 !important;
-    transform: none !important;
+    position: relative;
+    margin: 0;
+    transform: none;
+    z-index: 1;
   }
-
   #bio .bio-aside .musings-link {
-    position: relative !important;
-    right: auto !important;
-    bottom: auto !important;
-    align-self: flex-end !important;
-    margin: 0 12px 0 0 !important;
-    transform: none !important;
+    position: relative;
+    align-self: flex-end;
+    margin: 72px 12px 0 0;
+    transform: none;
+    z-index: 1;
+  }
+}
+/* Tablet/mobile: keep bokeh background, musings below motto */
+@media (max-width: 900px) {
+  #bio .bio-aside {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    min-height: 360px;
+    margin: 22px 0 28px;
+    padding: 28px 0 34px;
+    position: relative;
+    overflow: visible;
+  }
+  #bio .bio-aside::before {
+    content: '';
+    position: absolute;
+    inset: -14% 4% -10% 4%;
+    background: url('assets/philosographer_bokeh.jpg') center 42% / cover no-repeat;
+    opacity: .28;
+    -webkit-mask-image: radial-gradient(ellipse 70% 64% at 50% 50%, black 22%, rgba(0,0,0,.75) 52%, transparent 82%);
+    mask-image: radial-gradient(ellipse 70% 64% at 50% 50%, black 22%, rgba(0,0,0,.75) 52%, transparent 82%);
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+  }
+  #bio .bio-aside .bio-motto-wrap {
+    grid-row: 1;
+    max-width: 220px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  #bio .bio-aside .musings-link {
+    grid-row: 2;
+    justify-self: end;
+    align-self: end;
+    margin: 40px 22px 0 0;
+    position: relative;
+    transform: none;
+    z-index: 1;
+  }
+}
+@media (max-width: 640px) {
+  #bio .bio-aside {
+    min-height: 350px;
+    padding-bottom: 38px;
+  }
+  #bio .bio-aside .musings-link {
+    margin: 48px 18px 0 0;
   }
 }
 </style></head>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Musings — Max Minninna</title>
+<meta content="Photos with no camera. Observations and fragments by Max Minninna." name="description"/>
+<meta content="noindex, nofollow" name="robots"/>
+<link href="../assets/M symbol 3.svg" rel="icon" type="image/svg+xml"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3JT8JCZRDM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3JT8JCZRDM', {
+      page_title: 'My Musings — Max Minninna',
+      page_location: window.location.href,
+      send_page_view: true
+    });
+  </script>
+<style>
+    :root {
+      --bg:    #0b0b0b;
+      --text:  #f6f2ea;
+      --muted: rgba(246,242,234,.48);
+      --amber: #af8570;
+      --amber-dim: rgba(175,133,112,.28);
+      --line:  rgba(246,242,234,.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, #141414 0%, #181818 40%, #151515 100%);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER — identico alla home ── */
+    .site-header{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(10,10,10,.38);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+    .brand{display:flex;align-items:center;gap:12px}.brand-wordmark{height:17px;width:auto;filter:invert(1) brightness(1.06);opacity:.58}
+    .site-nav{display:flex;gap:16px;font-size:12px;letter-spacing:.01em;font-weight:300;text-transform:none}
+    .site-nav a{color:rgba(255,255,255,.52);transition:color .3s ease}
+    .site-nav a:hover{color:rgba(255,255,255,.95)}
+    .site-nav--desktop { display: flex; }
+    .site-nav--mobile  { display: none; }
+    @media (max-width: 430px) {
+      .site-nav--desktop { display: none; }
+      .site-nav--mobile  { display: flex; gap: 10px; font-size: 11px; letter-spacing: 0; text-transform: none; }
+      .site-nav--mobile a { color: rgba(255,255,255,.52); transition: color .3s ease; }
+      .site-nav--mobile a:hover { color: rgba(255,255,255,.95); }
+    }
+
+    /* ── PAGE HEADER ── */
+    /* ── BACK TO MM BAR ── */
+    .back-to-mm {
+      padding: 18px clamp(18px, 5vw, 64px) 0;
+      display: flex; align-items: center;
+    }
+    .back-to-mm-link {
+      display: inline-flex; align-items: center; gap: 12px;
+      color: rgba(246,242,234,.55);
+      font-size: 12px; letter-spacing: .14em; font-weight: 300;
+      transition: color .3s; text-decoration: none;
+    }
+    .back-to-mm-link:hover { color: rgba(246,242,234,.92); }
+    .back-arrow {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      border: 1px solid rgba(246,242,234,.22);
+      border-radius: 50%;
+      font-size: 14px; line-height: 1;
+      transition: border-color .3s, transform .3s;
+    }
+    .back-to-mm-link:hover .back-arrow {
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translateX(-3px);
+    }
+    .back-label { letter-spacing: .12em; }
+
+    /* ── GHOST title + shimmer ── */
+    .musing-ghost {
+      align-self: center;
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 700;
+      letter-spacing: -.06em;
+      line-height: 1.2;
+      color: rgba(246,242,234,.055);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      padding-right: 8px;
+      padding-bottom: .1em;
+      position: relative;
+      overflow: hidden;
+      filter: blur(3px);
+      transition: color .8s ease, filter .8s ease;
+    }
+    .musing-entry:hover .musing-ghost {
+      overflow: hidden;
+      position: relative;
+      filter: blur(0px);
+      color: rgba(246,242,234,.072);
+    }
+    /* fascio di luce — mix-blend-mode:overlay lo fa interagire con le lettere */
+    .musing-entry:hover
+    @keyframes ghostBeam {
+      0%   { opacity:0; background-position: -100% 0; background: linear-gradient(90deg, transparent 0%, transparent 30%, rgba(255,220,180,.5) 40%, rgba(255,220,180,.5) 48%, transparent 58%, transparent 100%); background-size: 200% 100%; }
+      5%   { opacity:1; }
+      100% { opacity:0; background: linear-gradient(90deg, transparent 0%, transparent 80%, rgba(255,220,180,.5) 90%, rgba(255,220,180,.5) 98%, transparent 100%); }
+    }
+    .musings-hero {
+      display: flex;
+      align-items: stretch;
+      margin-top: 28px;
+    }
+    .page-header {
+      flex: 0 0 44vw;
+      min-width: 240px;
+      padding: clamp(32px, 4vw, 64px) clamp(18px, 5vw, 64px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .page-eyebrow {
+      font-size: max(9px, 1.1vw); letter-spacing: .32em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 1.2vw; display: block;
+    }
+    .page-title {
+      font-size: max(26px, 4.2vw);
+      font-weight: 300; letter-spacing: .04em; line-height: 1;
+    }
+    .title-darkroom {
+      font-style: italic;
+      font-size: .58em;
+      color: rgba(175,133,112,.72);
+      letter-spacing: .06em;
+      display: block;
+      margin-top: .2em;
+    }
+    .page-title-row { display: flex; align-items: center; gap: max(8px, 1.2vw); }
+    .back-symbol {
+      display: inline-flex; align-items: center; flex-shrink: 0;
+      opacity: .38; animation: symbolGlow 5s ease-in-out infinite; transition: opacity .3s;
+    }
+    .back-symbol img { width: max(20px, 2.8vw); height: auto; display: block; }
+    .back-symbol:hover { opacity: .72; }
+    @keyframes symbolGlow {
+      0%, 100% { filter: drop-shadow(0 0 0px rgba(175,133,112,0)); opacity: .38; }
+      50%       { filter: drop-shadow(0 0 7px rgba(175,133,112,.65)); opacity: .55; }
+    }
+    .page-subtitle {
+      margin-top: max(12px, 1.4vw); font-size: max(11px, 1.1vw);
+      color: rgba(246,242,234,.34); font-style: italic; font-weight: 300; letter-spacing: .10em;
+    }
+
+    /* ── VIDEO a destra ── */
+    .musings-video-wrap {
+      flex: 1 1 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .musings-video-poster,
+    .musings-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      z-index: 2;
+      filter: saturate(.7) brightness(.65);
+      transition: filter 0.6s ease;
+    }
+    .musings-video-poster { z-index: 1; transition: opacity .8s ease; }
+    .musings-video-poster.hidden { opacity: 0; }
+    .musings-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      z-index: 2;
+      filter: saturate(.7) brightness(.65);
+      transition: filter 0.6s ease;
+    }
+    /* scrim sui 4 bordi — sinistra più densa per raccordarsi col testo */
+    .musings-video-wrap::after {
+      content: ''; position: absolute; inset: 0; z-index: 3;
+      background:
+        linear-gradient(90deg,  #141414 0%, rgba(20,20,20,.82) 22%, transparent 48%),
+        linear-gradient(270deg, #141414 0%, rgba(20,20,20,.35) 8%, transparent 22%),
+        linear-gradient(180deg, #141414 0%, rgba(20,20,20,.35) 8%, transparent 22%),
+        linear-gradient(0deg,   #141414 0%, rgba(20,20,20,.35) 8%, transparent 22%);
+      pointer-events: none;
+    }
+    .divider { height: 1px; background: var(--line); margin: 0 clamp(18px, 5vw, 64px); }
+    @media (max-width: 640px) {
+      .musings-hero { flex-direction: column; margin-top: 8px; }
+      .page-header { width: 100%; padding-top: 14px; padding-bottom: 20px; }
+      .page-title { font-size: max(32px, 8.5vw); letter-spacing: .14em; }
+      .musings-video-wrap { height: 200px; flex: 0 0 auto; }
+      .musings-video-wrap::after {
+        background:
+          linear-gradient(180deg, #141414 0%, rgba(20,20,20,.5) 14%, transparent 32%),
+          linear-gradient(0deg,   #141414 0%, rgba(20,20,20,.5) 14%, transparent 32%),
+          linear-gradient(90deg,  #141414 0%, rgba(20,20,20,.3) 8%, transparent 20%),
+          linear-gradient(270deg, #141414 0%, rgba(20,20,20,.3) 8%, transparent 20%);
+      }
+    }
+
+    /* ── MUSINGS LIST ── */
+    .musings-list {
+      padding: 0 clamp(18px, 5vw, 64px);
+    }
+    .musings-loading {
+      padding: 80px 0; font-size: 11px; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(246,242,234,.16);
+    }
+
+    /* ── ENTRY ── */
+    .musing-entry {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      grid-template-areas: "date content ghost";
+      gap: 0 28px;
+      padding: 52px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .musing-datecol  { grid-area: date; }
+    .musing-content  { grid-area: content; }
+    .musing-ghost    {
+      overflow: hidden;
+      position: relative; grid-area: ghost; }
+
+    /* G — linea ambra verticale sul bordo sinistro */
+    .musing-entry::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 52px; bottom: 52px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--amber) 0%, rgba(175,133,112,.2) 100%);
+      transition: opacity .4s;
+    }
+    .musing-entry:hover::before {
+      opacity: 1;
+    }
+
+    /* ghost title — colonna destra, blur/focus sull'hover */
+    .musing-ghost {
+      overflow: hidden;
+      position: relative;
+      align-self: center;
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 700;
+      letter-spacing: -.06em;
+      line-height: 1;
+      color: rgba(246,242,234,.04);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      filter: blur(4px);
+      transition: color .8s ease, filter .8s ease;
+      padding-right: 8px;
+    }
+    .musing-entry:hover .musing-ghost {
+      overflow: hidden;
+      position: relative;
+      color: rgba(175,133,112,.10);
+      filter: blur(0px);
+    }
+
+    /* shimmer sweep — sx → dx, confinato al ghost title */
+    .musing-ghost::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(175,133,112,.18), transparent);
+      transform: translateX(-130%);
+      opacity: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .musing-entry:hover .musing-ghost::after {
+      animation: ghostShimmer 1.2s ease forwards;
+    }
+
+    @keyframes ghostShimmer {
+      0%   { transform: translateX(-130%); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateX(270%); opacity: 0; }
+    }
+
+    /* nascosto su mobile */
+    @media (max-width: 768px) {
+      .musing-ghost {
+      overflow: hidden;
+      position: relative; display: none; }
+      .musing-entry {
+        grid-template-columns: 48px 1fr;
+        grid-template-areas: "date content";
+      }
+    }
+
+    /* H — data verticale: giorno + mese leggibili */
+    .musing-datecol {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+      gap: 4px;
+    }
+    .musing-day {
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: -.02em;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .musing-month {
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(175,133,112,.65);
+      line-height: 1;
+      text-align: center;
+    }
+
+    /* Content col */
+    .musing-content {
+      opacity: 0;
+      animation: none;
+    }
+    .musing-entry.ink-visible .musing-content {
+      animation: inkIn 1.1s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes inkIn {
+      from { opacity: 0; transform: translateX(8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .musing-title {
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 300; letter-spacing: -.02em; line-height: 1.2;
+      margin-bottom: 18px; max-width: 520px;
+      cursor: pointer; transition: color .3s, transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .musing-title:hover { color: rgba(246,242,234,.62); }
+    .musing-entry:hover .musing-title { transform: translateX(5px); }
+
+    /* separatore animato — la linea in fondo scorre in ambra sull'hover */
+    .musing-entry {
+      position: relative;
+    }
+    .musing-entry::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--amber);
+      transition: width .6s cubic-bezier(.16,1,.3,1);
+      opacity: .5;
+    }
+    .musing-entry:hover::after {
+      width: 100%;
+    }
+
+    .musing-body {
+      font-size: 15px; line-height: 1.92;
+      color: rgba(246,242,234,.58); font-weight: 300;
+      max-width: 520px;
+      max-height: 84px; overflow: hidden; position: relative;
+      transition: max-height .7s cubic-bezier(.16,1,.3,1);
+    }
+    .musing-body p { margin-bottom: 1.1em; }
+    .musing-body p:last-child { margin-bottom: 0; }
+    .musing-body::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 48px;
+      background: linear-gradient(transparent, #181818);
+      transition: opacity .5s;
+    }
+    .musing-entry.expanded .musing-body { max-height: 4000px; }
+    .musing-entry.expanded .musing-body::after { opacity: 0; }
+
+    .musing-toggle {
+      margin-top: 18px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(246,242,234,.22); cursor: pointer;
+      border: none; background: none; padding: 0; font-family: inherit;
+      transition: color .25s;
+    }
+    .musing-toggle:hover { color: var(--amber); }
+    .musing-toggle-arrow {
+      width: 10px; height: 10px;
+      border-right: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: rotate(45deg); transition: transform .3s; flex-shrink: 0;
+    }
+    .musing-entry.expanded .musing-toggle-arrow { transform: rotate(-135deg); }
+
+    /* Mobile: data in riga */
+    @media (max-width: 600px) {
+      .musing-entry {
+        grid-template-columns: 48px 1fr;
+        grid-template-areas: "date content";
+        gap: 0 20px;
+      }
+      .musing-ghost {
+      overflow: hidden;
+      position: relative; display: none; }
+      .musing-datecol {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .musing-day { font-size: 18px; }
+      .musing-month { font-size: 9px; }
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      margin-top: 80px; padding: 28px clamp(18px, 5vw, 64px);
+      border-top: 1px solid var(--line);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .footer-symbol { width: 22px; opacity: .26; }
+    .footer-copy { font-size: 11px; color: rgba(246,242,234,.2); letter-spacing: .06em; }
+    .footer-back {
+      margin-left: auto; font-size: 10px; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(246,242,234,.24); transition: color .25s;
+    }
+    .footer-back:hover { color: var(--amber); }
+  
+    /* force read more visible */
+    .musing-toggle {
+      display: inline-flex !important;
+    }
+
+  
+    .musings-hero:hover .musings-video {
+      filter: saturate(.8) brightness(.85);
+    }
+
+
+/* ── MUSINGS LOGO REFINEMENT ── */
+.musings-logo-row {
+  display: block;
+}
+
+.musings-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+  margin: 0;
+  color: var(--text);
+}
+
+.musings-logo-enter {
+  display: block;
+  margin: 0 0 clamp(5px, .55vw, 8px);
+  font-size: clamp(9px, .8vw, 11px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(246,242,234,.42);
+}
+
+.musings-logo-main {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(36px, 5.15vw, 74px);
+  line-height: .86;
+  font-weight: 200;
+  letter-spacing: -.068em;
+  color: rgba(246,242,234,.92);
+}
+
+.musings-logo-main .mm {
+  font-weight: 520;
+  letter-spacing: -.075em;
+}
+
+.musings-word-gap {
+  display: inline-block;
+  width: .10em;
+}
+
+.musings-logo-sub {
+  display: inline-block;
+  margin-top: clamp(7px, .75vw, 11px);
+  font-size: clamp(9px, .78vw, 11px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: rgba(175,133,112,.66);
+  white-space: nowrap;
+}
+
+.page-subtitle {
+  max-width: 420px;
+}
+
+/* desktop balance: lascia aria al video e impedisce collisioni */
+@media (min-width: 641px) {
+  .page-header {
+    flex-basis: min(44vw, 560px);
+  }
+}
+
+/* tablet */
+@media (max-width: 900px) and (min-width: 641px) {
+  .page-header {
+    flex: 0 0 48vw;
+    padding-right: clamp(18px, 3vw, 36px);
+  }
+
+  .musings-logo-main {
+    font-size: clamp(34px, 5.6vw, 58px);
+  }
+}
+
+/* mobile: logo più compatto, niente tracking enorme ereditato dal vecchio title */
+@media (max-width: 640px) {
+  .page-title {
+    letter-spacing: 0;
+  }
+
+  .page-header {
+    padding-top: 18px;
+    padding-bottom: 22px;
+  }
+
+  .musings-logo-main {
+    font-size: clamp(38px, 12vw, 54px);
+    letter-spacing: -.072em;
+  }
+
+  .musings-logo-main .mm {
+    font-weight: 520;
+  }
+
+  .musings-word-gap {
+    width: .08em;
+  }
+
+  .musings-logo-sub {
+    margin-top: 8px;
+    font-size: 9px;
+  }
+
+  .page-subtitle {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.5;
+    max-width: 300px;
+  }
+}
+
+/* very small phones */
+@media (max-width: 380px) {
+  .musings-logo-main {
+    font-size: clamp(34px, 11.4vw, 44px);
+  }
+
+  .musings-logo-enter,
+  .musings-logo-sub {
+    font-size: 8.5px;
+  }
+
+  .back-to-mm {
+    padding-top: 14px;
+  }
+
+  .site-nav--mobile {
+    gap: 8px;
+    font-size: 10.5px;
+  }
+}
+
+/* tweaks v2 */
+.musings-logo-sub{
+  font-size: clamp(10px, .95vw, 13px);
+}
+
+.page-eyebrow{
+  display:inline-block;
+  max-width:100%;
+}
+
+.page-subtitle{
+  display:inline-block;
+  max-width:100%;
+  font-size: clamp(10px, .9vw, 12px);
+}
+
+
+/* --- hierarchy inversion --- */
+
+/* make DAILY DARKROOM stronger */
+.musings-logo-sub{
+  font-size: clamp(12px, 1.1vw, 16px);
+  letter-spacing: 0;
+  color: rgba(246,242,234,.85);
+}
+
+/* make eyebrow lighter */
+.page-eyebrow{
+  font-size: clamp(9px, .7vw, 10px);
+  color: rgba(246,242,234,.38);
+}
+
+/* subtitle lighter + spaced */
+.page-subtitle{
+  font-size: clamp(9px, .7vw, 11px);
+  letter-spacing: .12em;
+  color: rgba(246,242,234,.32);
+}
+
+
+/* FIX weight + eyebrow */
+
+/* force thin logo */
+.musings-logo-main{
+  font-weight: 200 !important;
+}
+.musings-logo-main .mm{
+  font-weight: 400 !important;
+}
+
+/* restore eyebrow amber */
+.page-eyebrow{
+  color: var(--amber) !important;
+}
+
+
+/* FIX weights correctly */
+
+/* main logo thinner */
+.musings-logo-main{
+  font-weight: 200 !important;
+}
+
+/* MM stronger than rest */
+.musings-logo-main .mm{
+  font-weight: 600 !important;
+}
+
+/* fix eyebrow size/air */
+.page-eyebrow{
+  font-size: clamp(10px, .9vw, 12px);
+  letter-spacing: .28em;
+}
+
+
+/* FORCE thinner logo correctly */
+.musings-logo-main{
+  font-weight: 100 !important;
+}
+.musings-logo-main .mm{
+  font-weight: 500 !important;
+}
+
+/* subtitle spacing + no dot handled in HTML */
+.page-subtitle{
+  letter-spacing: .16em;
+}
+
+/* fix video crop: increase hero height */
+.musings-hero{
+  align-items: stretch;
+  min-height: 420px;
+}
+
+.musings-video-wrap{
+  min-height: 420px;
+}
+
+/* FINAL thin fix */
+.musings-logo-main{
+  font-weight: 200 !important;
+  letter-spacing: -0.085em;
+}
+
+.musings-logo-main .mm{
+  font-weight: 500 !important;
+  letter-spacing: -0.09em;
+}
+
+/* REAL THIN FIX */
+.musings-logo-main{
+  font-weight: 200 !important;
+  font-variation-settings: "wght" 200;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.musings-logo-main .mm{
+  font-weight: 500 !important;
+  font-variation-settings: "wght" 500;
+}
+
+/* EYEBROW + SUBTITLE FINAL */
+.page-eyebrow {
+  font-size: clamp(9px, .8vw, 11px) !important;
+  letter-spacing: .42em !important;
+  color: var(--amber) !important;
+  font-weight: 300 !important;
+  text-transform: uppercase;
+}
+
+.page-subtitle {
+  font-size: clamp(12px, 1.1vw, 15px) !important;
+  letter-spacing: .22em !important;
+  color: rgba(246,242,234,.38) !important;
+  font-style: italic;
+  font-weight: 300;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&amp;display=swap" rel="stylesheet"/></head>
+<body>
+<header class="site-header">
+<a aria-label="Max Minninna home" class="brand" href="../index.html">
+<img alt="Max Minninna" class="brand-wordmark" src="../assets/mmlogo_250.svg"/>
+</a>
+<nav class="site-nav site-nav--desktop">
+<a href="../index.html#latest">Latest</a>
+<a href="../index.html#topshots">Popular</a>
+<a href="../index.html#selected">Collections</a>
+<a href="../index.html#archive">Portfolio</a>
+<a href="../index.html#bio">MM</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<nav class="site-nav site-nav--mobile">
+<a href="../index.html#latest">New</a>
+<a href="../index.html#topshots">Pop</a>
+<a href="../index.html#selected">Collections</a>
+<a href="../index.html#bio">MM</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+</header>
+<!-- back to MM bar -->
+<div class="back-to-mm">
+<a aria-label="Back to MM" class="back-to-mm-link" href="../index.html#bio">
+<span class="back-arrow">←</span>
+<span class="back-label">Back to MM</span>
+</a>
+</div>
+<div class="musings-hero">
+<div class="page-header">
+<span class="page-eyebrow" id="musingsEyebrow">A space to think out loud</span>
+<div class="page-title-row musings-logo-row"><h1 aria-label="My Musings — The Daily Darkroom" class="musings-logo"><span class="musings-logo-main" id="musingsLogoMain"><span class="mm">M</span>y<span class="musings-word-gap"> </span><span class="mm">M</span>usings</span><span class="musings-logo-sub" id="musingsLogoSub">the daily darkroom</span></h1></div>
+<p class="page-subtitle" id="musingsSubtitle">Taking pictures without a camera first</p>
+</div>
+<div class="musings-video-wrap">
+<img alt="" class="musings-video-poster" id="musingsPoster" src="assets/musings_hand_writing.jpg"/>
+<video autoplay="" class="musings-video" id="musingVideo" loop="" muted="" playsinline="" poster="assets/musings_hand_writing.jpg">
+<source src="assets/musings_hand_writing.mp4" type="video/mp4"/>
+</video>
+</div>
+</div>
+<main class="musings-list" id="musingsList">
+<p class="musings-loading" id="loadingState">—</p>
+</main>
+<footer class="site-footer">
+<img alt="" class="footer-symbol" src="../assets/M symbol 3.svg"/>
+<p class="footer-copy">© 2026 Max Minninna</p>
+<a class="footer-back" href="../index.html">← Portfolio</a>
+</footer>
+<script src="musings.js"></script>
+<script>
+    // Nascondi il poster quando il video è pronto
+    const video = document.getElementById('musingVideo');
+    const poster = document.getElementById('musingsPoster');
+    if (video && poster) {
+      video.addEventListener('canplay', () => {
+        poster.classList.add('hidden');
+      });
+    }
+  </script>
+<script>
+    // Read more sempre visibile
+    (function () {
+      function ensureReadMoreButtons() {
+        document.querySelectorAll('.musing-entry').forEach(entry => {
+          const body = entry.querySelector('.musing-body');
+          if (!body) return;
+
+          let toggle = entry.querySelector('.musing-toggle');
+          if (!toggle) {
+            toggle = document.createElement('button');
+            toggle.className = 'musing-toggle';
+            toggle.type = 'button';
+            toggle.innerHTML = '<span>see more</span><span class="musing-toggle-arrow"></span>';
+            body.insertAdjacentElement('afterend', toggle);
+
+            toggle.addEventListener('click', () => {
+              const expanded = entry.classList.toggle('expanded');
+              const label = toggle.querySelector('span');
+              if (label) label.textContent = expanded ? 'see less' : 'see more';
+              if (expanded && typeof gtag === 'function') {
+                const titleEl = entry.querySelector('.musing-title');
+                const musingTitle = titleEl ? titleEl.textContent.trim() : '';
+                gtag('event', 'musing_open', {
+                  musing_title: musingTitle
+                });
+              }
+            });
+          } else {
+            toggle.hidden = false;
+            toggle.style.display = 'inline-flex';
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', ensureReadMoreButtons);
+      window.addEventListener('load', ensureReadMoreButtons);
+      setTimeout(ensureReadMoreButtons, 100);
+      setTimeout(ensureReadMoreButtons, 400);
+      setTimeout(ensureReadMoreButtons, 1000);
+
+      const list = document.getElementById('musingsList');
+      if (list) {
+        new MutationObserver(ensureReadMoreButtons).observe(list, {
+          childList: true,
+          subtree: true
+        });
+      }
+    })();
+  </script>
+<script>
+(function () {
+  function fitMusingsLogoSubtitle() {
+    const main = document.getElementById("musingsLogoMain");
+    const sub = document.getElementById("musingsLogoSub");
+    if (!main || !sub) return;
+
+    sub.style.letterSpacing = "0px";
+    sub.style.width = "auto";
+
+    const mainWidth = main.getBoundingClientRect().width;
+    const subWidth = sub.getBoundingClientRect().width;
+    const textLength = sub.textContent.trim().length;
+
+    if (mainWidth > subWidth && textLength > 1) {
+      const spacing = (mainWidth - subWidth) / (textLength - 1);
+      sub.style.letterSpacing = spacing + "px";
+    }
+  }
+
+  window.addEventListener("load", fitMusingsLogoSubtitle);
+  window.addEventListener("resize", fitMusingsLogoSubtitle);
+  document.addEventListener("DOMContentLoaded", fitMusingsLogoSubtitle);
+  setTimeout(fitMusingsLogoSubtitle, 100);
+  setTimeout(fitMusingsLogoSubtitle, 500);
+})();
+</script><script>
+(function(){
+function fitAll(){
+  const main=document.getElementById('musingsLogoMain');
+  const sub=document.getElementById('musingsLogoSub');
+  const eyebrow=document.getElementById('musingsEyebrow');
+  const subtitle=document.getElementById('musingsSubtitle');
+  if(!main) return;
+  const w=main.getBoundingClientRect().width;
+
+  [sub,eyebrow,subtitle].forEach(el=>{
+    if(!el) return;
+    el.style.letterSpacing='0px';
+    const txt=el.textContent.trim().length;
+    const sw=el.getBoundingClientRect().width;
+    if(w>sw && txt>1){
+      const sp=(w-sw)/(txt-1);
+      el.style.letterSpacing=sp+'px';
+    }
+  });
+}
+window.addEventListener('load',fitAll);
+window.addEventListener('resize',fitAll);
+setTimeout(fitAll,200);
+})();
+</script></body>
+</html>

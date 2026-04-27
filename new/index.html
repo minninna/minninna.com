@@ -486,6 +486,34 @@
     transform: none;
   }
 }
+
+
+/* REAL DESKTOP SPACING: create actual vertical space inside the column */
+@media (min-width: 901px) {
+  #bio .bio-aside {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 96px !important;
+    position: relative !important;
+  }
+
+  #bio .bio-aside .bio-motto-wrap {
+    position: relative !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  #bio .bio-aside .musings-link {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    align-self: flex-end !important;
+    margin: 0 12px 0 0 !important;
+    transform: none !important;
+  }
+}
 </style></head>
 <body>
 <button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>

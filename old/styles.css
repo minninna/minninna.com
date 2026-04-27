@@ -329,7 +329,7 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
 
   @keyframes heroLogoFade {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to   { opacity: .62; }
   }
 }
 
@@ -531,11 +531,11 @@ body.reveal-nsfw .is-nsfw.topshot-card img { filter: none; transition: filter 1.
 @media (max-width: 768px) {
   /* M symbol e scroll: stessa quota in basso, bilanciati sx e dx */
   .hero-mark-bottomleft {
-    bottom: 90px;
+    bottom: 72px;
     left: clamp(20px, 5vw, 36px);
   }
   .hero-scroll-indicator {
-    bottom: 115px !important;
+    bottom: 90px !important;
     right: clamp(20px, 5vw, 36px) !important;
     left: auto !important;
   }
@@ -759,6 +759,7 @@ BIO SECTION — FIXED LAYOUT & TYPOGRAPHY
   font-size: clamp(32px, 4.5vw, 56px); font-weight: 300;
   letter-spacing: -.04em; color: var(--text); margin: 0; line-height: .96;
 }
+/* .musings-link rimosso da qui — stili gestiti inline in index.html */
 
 .bio-columns {
   display: flex;
@@ -1141,6 +1142,7 @@ BIO SECTION — FIXED LAYOUT & TYPOGRAPHY
   flex-direction: column;
   gap: 18px;
   margin-bottom: 28px;
+  margin-top: 28px;
 }
 
 .contact-field { display: flex; flex-direction: column; gap: 6px; }

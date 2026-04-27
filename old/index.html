@@ -101,34 +101,91 @@
   align-items: flex-start;
   text-decoration: none;
   color: inherit;
-  transform: translateX(-40px);
 }
 
+/* enter label */
 .musings-enter {
-  font-size: 10px;
-  letter-spacing: 0.18em;
+  display: block;
+  margin: 0 0 clamp(4px, .4vw, 6px);
+  font-size: clamp(8px, .7vw, 10px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: .28em;
   text-transform: uppercase;
-  opacity: 0.45;
-  margin-bottom: 6px;
+  color: rgba(175,133,112,.6);
+  transition: opacity 0.2s ease;
 }
 
+.musings-link:hover .musings-enter {
+  opacity: 0.7;
+}
+
+/* My Musings main — matches REAL THIN FIX in musings page */
 .musings-main {
-  font-size: clamp(28px, 3vw, 42px);
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(18px, 2.6vw, 32px);
+  line-height: .86;
   font-weight: 200;
-  letter-spacing: -0.055em;
-  line-height: 0.9;
+  font-variation-settings: "wght" 200;
+  letter-spacing: -0.085em;
+  color: rgba(246,242,234,.72);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: opacity 0.2s ease;
+}
+
+.musings-link:hover .musings-main {
+  opacity: 0.75;
 }
 
 .musings-main .mm {
   font-weight: 500;
+  font-variation-settings: "wght" 500;
+  letter-spacing: -0.09em;
 }
 
+.musings-word-gap {
+  display: inline-block;
+  width: .10em;
+}
+
+/* the daily darkroom — stronger, matches hierarchy inversion in musings page */
 .musings-sub {
-  margin-top: 6px;
-  font-size: 10px;
+  display: inline-block;
+  margin-top: clamp(5px, .5vw, 8px);
+  font-size: clamp(8px, .75vw, 11px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 0;
   text-transform: uppercase;
-  opacity: 0.5;
-  letter-spacing: 0px;
+  color: rgba(246,242,234,.5);
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.musings-link:hover .musings-sub {
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .musings-main {
+    font-size: clamp(18px, 5.5vw, 26px);
+    letter-spacing: -.072em;
+  }
+  .musings-sub {
+    font-size: 8px;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .musings-main {
+    font-size: clamp(16px, 5vw, 20px);
+  }
+  .musings-enter {
+    font-size: 7.5px;
+  }
 }
 </style></head>
 <body>
@@ -305,7 +362,7 @@ It becomes a quiet shift:</p>
 <img alt="Photography teaches us to observe" class="bio-motto-svg" src="assets/photography-motto.svg"/>
 </div>
 </div>
-</div><div class="bio-musings-outro"><a class="musings-link" href="musings/index.html"><span class="musings-enter">enter →</span><span class="musings-main" id="musingsMain"><span class="mm">M</span>y <span class="mm">M</span>usings</span><span class="musings-sub" id="musingsSub">the daily darkroom</span></a></div>
+</div><div class="bio-musings-outro"><a class="musings-link" href="musings/index.html"><span class="musings-enter">enter ↓</span><span class="musings-main" id="musingsMain"><span class="mm">M</span>y<span class="musings-word-gap"> </span><span class="mm">M</span>usings</span><span class="musings-sub" id="musingsSub">the daily darkroom</span></a></div>
 </section>
 <section class="contact-section intro-rise delay-3" id="contact">
 <div class="contact-wrap">

@@ -257,6 +257,16 @@ function openLightbox(photo, list, showArrows) {
   if (prevLightbox) prevLightbox.style.display = show ? '' : 'none';
   if (nextLightbox) nextLightbox.style.display = show ? '' : 'none';
   if (typeof lightbox.showModal === 'function') lightbox.showModal();
+  // GA4 tracking — photo_open event con photo_title e category
+  if (typeof gtag === 'function') {
+    gtag('event', 'photo_open', {
+      photo_title: photo.title,
+      item_name: photo.title,
+      event_category: photo.category || 'uncategorized',
+      event_label: photo.title,
+      photo_category: photo.category || 'uncategorized'
+    });
+  }
 }
 
 function updateLightbox() {

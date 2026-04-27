@@ -715,7 +715,7 @@ BIO SECTION — FIXED LAYOUT & TYPOGRAPHY
 .bio-layout {
   display: flex;
   gap: 48px;
-  align-items: flex-start;
+  align-items: stretch;
   padding-top: 32px;
   max-width: 1080px;
   margin: 0 auto;
@@ -798,8 +798,9 @@ BIO SECTION — FIXED LAYOUT & TYPOGRAPHY
 /* Logo posizionato in modo bilanciato */
 .bio-aside {
   flex: 0 0 260px;
-  align-self: center;
+  align-self: stretch;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;

@@ -3,6 +3,12 @@
  
 const MUSINGS = [ 
   {
+    date: '20260429',
+    title: 'To be or not to be',
+    content: `To be or not to be a photograph; that is the question.\nBut more to the point: are we making photographs or merely recording images?`
+  }
+,  
+  {
     date: '20260428',
     title: 'The song behind the image',
     content: `It's a game I've been playing for years\nmy two oldest obsessions, talking to each other.\nEvery photograph has a song behind it.\nA title, a few lyrics.\nNot a caption, something that was already there, quietly.\nSomeone noticed. That made me smile.`

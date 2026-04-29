@@ -90,7 +90,7 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
 .category-card.cat-1{clip-path:polygon(0 0,100% 0,100% 100%,var(--notch) 100%,var(--notch) calc(100% - var(--notch)),0 calc(100% - var(--notch)));border-bottom-left-radius:0}
 .category-card.cat-2{clip-path:polygon(0 0,calc(100% - var(--notch)) 0,calc(100% - var(--notch)) var(--notch),100% var(--notch),100% 100%,0 100%);border-top-right-radius:0}
 .category-card.cat-3{clip-path:polygon(0 var(--notch),var(--notch) var(--notch),var(--notch) 0,100% 0,100% 100%,0 100%);border-top-left-radius:0}
-.center-mark{position:absolute;left:50%;top:50%;transform: translate(10px, -6px);width:var(--center-size);height:var(--center-size);border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(8,8,8,.72);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;box-shadow:0 20px 36px rgba(0,0,0,.28)}
+.center-mark{position:absolute;left:50%;top:50%;transform: translate(-50%, -50%);width:var(--center-size);height:var(--center-size);border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(8,8,8,.72);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;box-shadow:0 20px 36px rgba(0,0,0,.28)}
 .center-mark img{width:60px;height:auto;filter:invert(1)}
 .archive-section{padding:34px 0 24px}
 .archive-panel{border-radius:28px;background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);color:var(--text-dark);border:1px solid rgba(18,18,18,.08);padding:22px}
@@ -344,7 +344,7 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
 .category-card.cat-1 .card-meta, .category-card.cat-3 .card-meta { right: 18px; left: calc(var(--center-size) + 26px); text-align: right; }
 
 .center-mark {
-  position: absolute; left: 50%; top: 50%; transform: translate(10px, -6px);
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: var(--center-size); height: var(--center-size);
   border-radius: 0; background: #0b0b0b; border: 1px solid rgba(255,255,255,.08);
   display: flex; align-items: center; justify-content: center;

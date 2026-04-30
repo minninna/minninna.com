@@ -3,6 +3,12 @@
  
 const MUSINGS = [ 
   {
+    date: '20260430',
+    title: 'Photography is when...',
+    content: `Back to yesterday's thought: we all take photos, photography is when the photo takes us`
+  }
+,  
+  {
     date: '20260429',
     title: 'To be or not to be',
     content: `To be or not to be a photograph; that is the question.\nBut more to the point: are we making photographs or merely recording images?`

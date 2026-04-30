@@ -90,7 +90,7 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
 .category-card.cat-1{clip-path:polygon(0 0,100% 0,100% 100%,var(--notch) 100%,var(--notch) calc(100% - var(--notch)),0 calc(100% - var(--notch)));border-bottom-left-radius:0}
 .category-card.cat-2{clip-path:polygon(0 0,calc(100% - var(--notch)) 0,calc(100% - var(--notch)) var(--notch),100% var(--notch),100% 100%,0 100%);border-top-right-radius:0}
 .category-card.cat-3{clip-path:polygon(0 var(--notch),var(--notch) var(--notch),var(--notch) 0,100% 0,100% 100%,0 100%);border-top-left-radius:0}
-.center-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:var(--center-size);height:var(--center-size);border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(8,8,8,.72);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;box-shadow:0 20px 36px rgba(0,0,0,.28)}
+.center-mark{position:absolute;left:50%;top:50%;transform: translate(-50%, -50%);width:var(--center-size);height:var(--center-size);border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(8,8,8,.72);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;box-shadow:0 20px 36px rgba(0,0,0,.28)}
 .center-mark img{width:60px;height:auto;filter:invert(1)}
 .archive-section{padding:34px 0 24px}
 .archive-panel{border-radius:28px;background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);color:var(--text-dark);border:1px solid rgba(18,18,18,.08);padding:22px}
@@ -177,30 +177,14 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
 .hero-scrim { background: linear-gradient(90deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.10) 36%, rgba(0,0,0,.06) 65%, rgba(0,0,0,.14) 100%), linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.16)); }
 
 /* La composizione destra si adatta all'altezza disponibile */
-.hero-right-composition {
-  position: absolute; right: 54px; top: 72px; bottom: 44px; z-index: 3;
-  display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start;
-  pointer-events: none; max-width: 38vw;
-}
+
 /* Wordmark MM — scala con la larghezza della composizione */
-.hero-wordmark-top { width: 100%; height: auto; filter: invert(1) brightness(1.05); margin-bottom: 0; opacity: .62; }
+
 
 /* Portfolio — incollato sotto il wordmark, allineato a sx con la M */
-.hero-title-svg-wrap {
-  pointer-events: auto;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  margin-top: -2.6vw;
-}
-.hero-title-svg {
-  width: 100%; height: auto; opacity: .62;
-  pointer-events: auto;
-  cursor: pointer;
-  position: relative;
-}
+
+
 .hero-title-svg:hover {
-  animation: glitch .5s cubic-bezier(.25,.46,.45,.94) both;
 }
 
 /* Motto rimosso dalla hero — spostato in bio */
@@ -231,17 +215,17 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
 }
 
 @keyframes glitch {
-  0%   { transform: translate(0,0);        filter: none; }
-  10%  { transform: translate(-3px, 1px);  filter: hue-rotate(90deg) brightness(1.4); }
-  20%  { transform: translate(3px,-1px);   filter: hue-rotate(-60deg) brightness(1.2); }
-  30%  { transform: translate(-2px, 2px);  filter: none; }
-  40%  { transform: translate(2px,-2px);   filter: brightness(1.6) saturate(2); }
-  50%  { transform: translate(-1px, 1px);  filter: hue-rotate(180deg) brightness(1.3); }
-  60%  { transform: translate(1px, 0);     filter: none; }
-  70%  { transform: translate(-2px,-1px);  filter: brightness(1.4); }
-  80%  { transform: translate(2px, 1px);   filter: none; }
-  90%  { transform: translate(-1px, 0);    filter: brightness(1.2); }
-  100% { transform: translate(0,0);        filter: none; }
+  0%   { transform: translate(10px, -6px);        filter: none; }
+  10%  { transform: translate(10px, -6px);  filter: hue-rotate(90deg) brightness(1.4); }
+  20%  { transform: translate(10px, -6px);   filter: hue-rotate(-60deg) brightness(1.2); }
+  30%  { transform: translate(10px, -6px);  filter: none; }
+  40%  { transform: translate(10px, -6px);   filter: brightness(1.6) saturate(2); }
+  50%  { transform: translate(10px, -6px);  filter: hue-rotate(180deg) brightness(1.3); }
+  60%  { transform: translate(10px, -6px);     filter: none; }
+  70%  { transform: translate(10px, -6px);  filter: brightness(1.4); }
+  80%  { transform: translate(10px, -6px);   filter: none; }
+  90%  { transform: translate(10px, -6px);    filter: brightness(1.2); }
+  100% { transform: translate(10px, -6px);        filter: none; }
 }
 
 .hero-mobile-composition { display: none; }
@@ -275,7 +259,7 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
         rgba(0,0,0,.88) 100%);
   }
 
-  .hero-right-composition { display: none; }
+  
 
   .hero-mobile-composition {
     display: flex;
@@ -319,6 +303,7 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
   .hero-mob-portfolio {
     width: min(82vw, 340px);
     height: auto;
+    filter: invert(1);
     opacity: .62;
     cursor: pointer;
     display: block;
@@ -359,7 +344,7 @@ h2:hover{text-shadow:0 0 36px rgba(246,242,234,.18)}
 .category-card.cat-1 .card-meta, .category-card.cat-3 .card-meta { right: 18px; left: calc(var(--center-size) + 26px); text-align: right; }
 
 .center-mark {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: var(--center-size); height: var(--center-size);
   border-radius: 0; background: #0b0b0b; border: 1px solid rgba(255,255,255,.08);
   display: flex; align-items: center; justify-content: center;
@@ -1262,4 +1247,93 @@ BIO SECTION — FIXED LAYOUT & TYPOGRAPHY
 @media (max-width: 600px) {
   .site-footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
   .footer-symbol { width: 22px; }
+}
+
+
+.hero-right-composition {
+  position: absolute;
+  right: 62px; /* era 54px -> leggermente più a sinistra */
+  top: 72px;
+  bottom: 44px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  pointer-events: none;
+  max-width: 38vw;
+}
+.hero-wordmark-top {
+  width: 100%;
+  height: auto;
+  filter: invert(1) brightness(1.05);
+  margin-bottom: 0;
+  opacity: .62;
+}
+.hero-title-svg-wrap {
+  pointer-events: auto;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: -2.6vw;
+}
+.hero-title-svg {
+  width: 100%;
+  height: auto;
+  filter: invert(1);
+  opacity: .62;
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
+}
+/* ============================================================
+   HERO LOGO FIX — single combined Portfolio/MMXXVI SVG only
+   ============================================================ */
+.hero-right-composition {
+  position: absolute;
+  right: 62px;
+  top: 72px;
+  bottom: 44px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  pointer-events: none;
+  max-width: 38vw;
+}
+.hero-title-svg-wrap {
+  pointer-events: auto;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 0;
+}
+.hero-title-svg {
+  width: 100%;
+  height: auto;
+  filter: invert(1);
+  opacity: .62;
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
+}
+@media (min-width: 769px) {
+  .hero-mobile-composition { display: none !important; }
+  .hero-right-composition { display: flex !important; }
+}
+@media (max-width: 768px) {
+  .hero-right-composition { display: none !important; }
+  .hero-mobile-composition {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .hero-mob-bottom {
+    margin-top: clamp(18px, 6vh, 42px);
+  }
+  .hero-mob-portfolio {
+    width: min(86vw, 360px);
+  }
 }

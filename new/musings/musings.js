@@ -3,6 +3,12 @@
  
 const MUSINGS = [ 
   {
+    date: '20260502',
+    title: 'The Language Between Us',
+    content: `Originale in italiano\nLa fotografia è il tentativo di collegare mondi separati.\nIo vedo qualcosa, qualcuno, un frammento di vita.\nSe riesco a fotografarlo davvero, non lo sto solo conservando.\nSto trovando una lingua per parlarne a qualcun altro.\nSto creando una connessione.\nEnglish version\nPhotography is an attempt to connect separate worlds.\nI see something, someone, a fragment of life.\nIf I manage to truly photograph it, I’m not just preserving it.\nI’m finding a language to speak about it to someone else.\nI’m creating a connection.`
+  }
+,  
+  {
     date: '20260430',
     title: 'Photography is when...',
     content: `Back to yesterday's thought: we all take photos, photography is when the photo takes us`

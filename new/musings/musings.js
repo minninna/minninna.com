@@ -1,50 +1,50 @@
-// AUTO-GENERATED — non modificare manualmente. 
-// Rigenera con doppio clic su update_musings.bat 
- 
-const MUSINGS = [ 
+// AUTO-GENERATED — non modificare manualmente.
+// Rigenera con doppio clic su update_musings.bat
+
+const MUSINGS = [
   {
     date: '20260502',
-    title: 'The Language Between Us',
-    content: `Originale in italiano\nLa fotografia è il tentativo di collegare mondi separati.\nIo vedo qualcosa, qualcuno, un frammento di vita.\nSe riesco a fotografarlo davvero, non lo sto solo conservando.\nSto trovando una lingua per parlarne a qualcun altro.\nSto creando una connessione.\nEnglish version\nPhotography is an attempt to connect separate worlds.\nI see something, someone, a fragment of life.\nIf I manage to truly photograph it, I’m not just preserving it.\nI’m finding a language to speak about it to someone else.\nI’m creating a connection.`
+    title: "The Language Between Us",
+    content: "Originale in italiano\n\nLa fotografia è il tentativo di collegare mondi separati.\nIo vedo qualcosa, qualcuno, un frammento di vita.\nSe riesco a fotografarlo davvero, non lo sto solo conservando.\nSto trovando una lingua per parlarne a qualcun altro.\nSto creando una connessione.\n\n\nEnglish version\n\nPhotography is an attempt to connect separate worlds.\nI see something, someone, a fragment of life.\nIf I manage to truly photograph it, I’m not just preserving it.\nI’m finding a language to speak about it to someone else.\nI’m creating a connection."
   }
-,  
+,
   {
     date: '20260430',
-    title: 'Photography is when...',
-    content: `Back to yesterday's thought: we all take photos, photography is when the photo takes us`
+    title: "Photography is when...",
+    content: "Back to yesterday's thought: we all take photos, photography is when the photo takes us"
   }
-,  
+,
   {
     date: '20260429',
-    title: 'To be or not to be',
-    content: `To be or not to be a photograph; that is the question.\nBut more to the point: are we making photographs or merely recording images?`
+    title: "To be or not to be",
+    content: "To be or not to be a photograph; that is the question.\nBut more to the point: are we making photographs or merely recording images?"
   }
-,  
+,
   {
     date: '20260428',
-    title: 'The song behind the image',
-    content: `It's a game I've been playing for years\nmy two oldest obsessions, talking to each other.\nEvery photograph has a song behind it.\nA title, a few lyrics.\nNot a caption, something that was already there, quietly.\nSomeone noticed. That made me smile.`
+    title: "The song behind the image",
+    content: "It's a game I've been playing for years\nmy two oldest obsessions, talking to each other.\nEvery photograph has a song behind it.\nA title, a few lyrics.\nNot a caption, something that was already there, quietly.\nSomeone noticed. That made me smile."
   }
-,  
+,
   {
     date: '20260427',
-    title: 'The practice of seeing',
-    content: `Observation is a beginning.\nHonesty is what makes it real.\nWithout it, you get lost\nin assumptions, projections, distortions.\nSo you train it.\nLike a muscle.\nAnd slowly, things clear.\nYou see more.\nAnd in seeing more,\nthere’s a little more freedom.`
+    title: "The practice of seeing",
+    content: "Observation is a beginning.\nHonesty is what makes it real.\nWithout it, you get lost\nin assumptions, projections, distortions.\nSo you train it.\nLike a muscle.\nAnd slowly, things clear.\nYou see more.\nAnd in seeing more,\nthere’s a little more freedom."
   }
-,  
+,
   {
     date: '20260426',
-    title: 'Twentyfive Twentysix',
-    content: `That's how long it's been since I opened my first website. I didn't even know what a blog was. I was a kid, experimenting with HTML, trying to put something of myself into the web; whatever that meant back then.\nI don't remember exactly what I wrote in that first post. That was a fragment of a song, maybe. Something raw and unfinished, the way beginnings always are.\nNow I'm opening this space again.\nMusic and photography have always been here, they never really left. But they move like the ocean: waves coming in and pulling back, highs and lows, long silences and sudden, glorious returns. That's how it works. That's how it has always worked.\nThis place is called My Musings, The Daily Darkroom like a dark room, dark and luminous.\nDark because ideas need silence, or at least I do. I need to step away from the noise before I can enter the world of thought.\nLuminous because every idea, eventually, is a light switching on.\nA darkroom, after all, is where images are born.\nTwenty-five years and twenty-six days. Back to the beginning.`
+    title: "Twentyfive Twentysix",
+    content: "That's how long it's been since I opened my first website. I didn't even know what a blog was. I was a kid, experimenting with HTML, trying to put something of myself into the web; whatever that meant back then.\nI don't remember exactly what I wrote in that first post. That was a fragment of a song, maybe. Something raw and unfinished, the way beginnings always are.\n\nNow I'm opening this space again.\n\nMusic and photography have always been here, they never really left. But they move like the ocean: waves coming in and pulling back, highs and lows, long silences and sudden, glorious returns. That's how it works. That's how it has always worked.\n\nThis place is called My Musings, The Daily Darkroom like a dark room, dark and luminous.\nDark because ideas need silence, or at least I do. I need to step away from the noise before I can enter the world of thought.\nLuminous because every idea, eventually, is a light switching on.\n\nA darkroom, after all, is where images are born.\n\nTwenty-five years and twenty-six days. Back to the beginning."
   }
-,  
+,
   {
     date: '20260425',
-    title: 'A free space',
-    content: `This space sits next to the photographs.\nIf the rest of the site is made of images taken with a camera, this is where the images without a camera live.\nBecause photography, at least to me, does not begin with a device. It begins with observation. With the quiet act of noticing. You can photograph with a lens, or you can photograph without one, by paying attention, by staying with what is in front of you long enough for it to reveal something.\nMy Musings is that second space. A private area.\nA kind of notebook. Open, unfinished by design.\nSome entries might be fragments. Others might remain drafts. Observations caught in passing. Small anecdotes, almost like those curious pieces you find in old magazines. Thoughts on how things shift, culturally, socially, individually. Reflections that move between the personal and the collective, between what we are becoming and what we might be leaving behind.\nNothing here is meant to be definitive.\nThis is a place for notes, not statements. For questions more than answers. For thinking in public without the need to conclude.\nA free space.\nIt does not feel accidental that it begins today, on a day that here carries the meaning of freedom. Not only as a historical moment, but as a principle. A reminder.\nSo this will be that. A small exercise in freedom.\nTo observe.\nTo write.\nTo leave things open.`
+    title: "A free space",
+    content: "This space sits next to the photographs.\n\nIf the rest of the site is made of images taken with a camera, this is where the images without a camera live.\n\nBecause photography, at least to me, does not begin with a device. It begins with observation. With the quiet act of noticing. You can photograph with a lens, or you can photograph without one, by paying attention, by staying with what is in front of you long enough for it to reveal something.\n\nMy Musings is that second space. A private area.\n\nA kind of notebook. Open, unfinished by design.\n\nSome entries might be fragments. Others might remain drafts. Observations caught in passing. Small anecdotes, almost like those curious pieces you find in old magazines. Thoughts on how things shift, culturally, socially, individually. Reflections that move between the personal and the collective, between what we are becoming and what we might be leaving behind.\n\nNothing here is meant to be definitive.\n\nThis is a place for notes, not statements. For questions more than answers. For thinking in public without the need to conclude.\n\nA free space.\n\nIt does not feel accidental that it begins today, on a day that here carries the meaning of freedom. Not only as a historical moment, but as a principle. A reminder.\n\nSo this will be that. A small exercise in freedom.\n\nTo observe.\nTo write.\nTo leave things open."
   }
 ]; 
- 
+
 
 const inkObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {

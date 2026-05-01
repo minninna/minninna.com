@@ -150,9 +150,22 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 
 /* Base hero — sfondo nero fisso */
 .hero {
+  position: relative;
   min-height: calc(88vh - 70px);
-  background: #080808;
+  background: #080808 url('assets/dark-smart.png') center / cover no-repeat;
   overflow: hidden;
+}
+
+/* Centered motto layer behind floating photos */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: url('assets/motto-2026-lowercase-white-transparent-2.png') center 60% / min(38vw, 460px) auto no-repeat;
+  opacity: 0;
+  animation: heroMottoBgSequence 6.6s ease 1.2s forwards;
 }
 
 /* Contenitore foto flottanti */
@@ -168,26 +181,87 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   position: absolute;
   background-size: cover;
   background-position: center;
-  border-radius: 3px;
+  border-radius: 10px;
   opacity: 0;
-  filter: blur(12px) brightness(.7);
+  filter: blur(12px) brightness(.72) contrast(1.03) saturate(.94);
   transition:
     opacity 1.6s ease,
     filter 2.2s ease;
   box-shadow: 0 8px 48px rgba(0,0,0,.6);
+  overflow: hidden;
+}
+
+/* Gentle, elegant irregularity (subtle handcrafted edges) */
+.hero-photo.edge-rough-1 {
+  clip-path: polygon(1.2% 1.3%, 20% 1.0%, 40% 1.4%, 60% 1.0%, 80% 1.4%, 98.8% 1.2%, 99% 20%, 98.6% 40%, 99% 60%, 98.6% 80%, 98.8% 98.8%, 80% 99%, 60% 98.6%, 40% 99%, 20% 98.6%, 1.2% 98.8%, 1.0% 80%, 1.4% 60%, 1.0% 40%, 1.4% 20%);
+}
+.hero-photo.edge-rough-2 {
+  clip-path: polygon(1.1% 1.5%, 20% 1.1%, 40% 1.0%, 60% 1.4%, 80% 1.0%, 98.9% 1.4%, 98.8% 20%, 99% 40%, 98.5% 60%, 99% 80%, 98.7% 98.9%, 80% 98.8%, 60% 99%, 40% 98.6%, 20% 99%, 1.3% 98.7%, 1.0% 80%, 1.4% 60%, 1.0% 40%, 1.5% 20%);
+}
+.hero-photo.edge-rough-3 {
+  clip-path: polygon(1.3% 1.1%, 20% 1.4%, 40% 1.0%, 60% 1.4%, 80% 1.1%, 98.7% 1.3%, 99% 20%, 98.5% 40%, 99% 60%, 98.5% 80%, 98.8% 98.7%, 80% 99%, 60% 98.5%, 40% 99%, 20% 98.5%, 1.1% 98.8%, 1.4% 80%, 1.0% 60%, 1.4% 40%, 1.1% 20%);
+}
+.hero-photo.edge-rough-4 {
+  clip-path: polygon(1.0% 1.2%, 20% 1.0%, 40% 1.3%, 60% 1.0%, 80% 1.3%, 99% 1.1%, 98.8% 20%, 99% 40%, 98.6% 60%, 99% 80%, 98.9% 99%, 80% 98.8%, 60% 99%, 40% 98.7%, 20% 99%, 1.2% 98.9%, 1.0% 80%, 1.3% 60%, 1.0% 40%, 1.2% 20%);
+}
+
+/* Soft grain + edge falloff to avoid flat-looking frames */
+.hero-photo::before,
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 1.6s ease;
+}
+.hero-photo::before {
+  opacity: .40;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.03),
+    inset 0 0 46px rgba(0,0,0,.34),
+    inset 0 0 120px rgba(0,0,0,.58),
+    inset 0 0 176px rgba(0,0,0,.46);
+}
+.hero-photo::after {
+  opacity: .24;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle at 24% 18%, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 35%),
+    radial-gradient(circle at 78% 24%, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 32%),
+    radial-gradient(circle at 62% 74%, rgba(0,0,0,.16) 0%, rgba(0,0,0,0) 36%),
+    radial-gradient(circle at center, transparent 52%, rgba(0,0,0,.26) 76%, rgba(0,0,0,.52) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 190px 190px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
 }
 .hero-photo.visible {
-  opacity: 1;
-  filter: blur(0px) brightness(.82);
+  opacity: .84;
+  filter: blur(0px) brightness(.80) contrast(1.04) saturate(.92);
+}
+.hero-photo.visible::before {
+  opacity: .56;
+}
+.hero-photo.visible::after {
+  opacity: .38;
 }
 .hero-photo.fading {
   opacity: 0;
-  filter: blur(6px) brightness(.5);
+  filter: blur(6px) brightness(.56) contrast(.96) saturate(.9);
   transition: opacity 1.8s ease, filter 1.8s ease;
+}
+.hero-photo.fading::before {
+  opacity: .22;
+}
+.hero-photo.fading::after {
+  opacity: .14;
 }
 
 /* Scrim leggero solo in alto e in basso per logo e motto */
 .hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
   background:
     linear-gradient(180deg,
       rgba(0,0,0,.72) 0%,
@@ -205,7 +279,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 /* ---- Logo in alto centrato ---- */
 .hero-logo-wrap {
   position: absolute;
-  top: clamp(24px, 4vh, 48px);
+  top: clamp(72px, 8vh, 120px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
@@ -230,8 +304,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   z-index: 4;
   text-align: center;
   white-space: nowrap;
-  opacity: 0;
-  animation: heroFadeIn 1.2s ease .6s forwards;
+  display: none;
 }
 .hero-motto-line {
   margin: 0;
@@ -249,13 +322,40 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
+@keyframes heroMottoBgSequence {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  20% {
+    opacity: .14;
+    transform: scale(1);
+  }
+  58% {
+    opacity: .14;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
 /* ============================================================
    HERO — mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
   .hero { min-height: 92vh; }
 
-  .hero-logo-wrap { width: min(88vw, 380px); }
+  .hero::before {
+    background-size: min(52vw, 320px);
+    background-position: center 63%;
+  }
+
+  .hero-logo-wrap {
+    top: 128px;
+    width: min(88vw, 380px);
+  }
 
   .hero-motto-line {
     font-size: clamp(11px, 3.2vw, 15px);
@@ -263,6 +363,18 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
     white-space: normal;
   }
   .hero-motto-wrap { width: 80vw; white-space: normal; }
+}
+
+@media (max-width: 430px) {
+  .hero::before {
+    background-size: min(60vw, 270px);
+    background-position: center 64%;
+  }
+
+  .hero-logo-wrap {
+    top: 148px;
+    width: min(86vw, 340px);
+  }
 }
 
 
@@ -477,7 +589,7 @@ body.reveal-nsfw .is-nsfw.topshot-card img { filter: none; transition: filter 1.
    ============================================================ */
 .hero-scroll-indicator {
   position: absolute;
-  bottom: 22px;
+  bottom: 36px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;

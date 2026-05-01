@@ -61,6 +61,7 @@ window.addEventListener('load', function initHero() {
   const maxVisible = 3;
   const showEvery  = 7000;  // ms tra un'apparizione
   const resetAfter = 28000; // ms prima del reset — 3 foto × 7s = 21s + 7s di pausa
+  const introSequenceDelay = 8200; // 1) motto hero 2) pausa 3) dissolvenza/zoom 4) slideshow
   const activeCards = [];
   let zCounter = 2;
   let spawnCount = 0;
@@ -114,7 +115,8 @@ window.addEventListener('load', function initHero() {
     const top  = bestTop;
 
     const el = document.createElement('div');
-    el.className = 'hero-photo';
+    const edgeVariant = Math.floor(Math.random() * 4) + 1;
+    el.className = `hero-photo edge-rough-${edgeVariant}`;
     el.style.cssText = `width:${aw}px;height:${ph}px;top:${top}px;left:${left}px;background-image:url("${slide.low}");z-index:${++zCounter};`;
     heroPhotosEl.appendChild(el);
 
@@ -135,7 +137,7 @@ window.addEventListener('load', function initHero() {
     setTimeout(spawnPhoto, showEvery);
   }
 
-  setTimeout(spawnPhoto, 800);
+  setTimeout(spawnPhoto, introSequenceDelay);
 
   // Reset completo: tutte svaniscono → nero → ricomincia
   setInterval(() => {

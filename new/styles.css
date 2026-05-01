@@ -152,7 +152,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 .hero {
   position: relative;
   min-height: calc(88vh - 70px);
-  background: #080808 url('assets/dark-smart.png') center / cover no-repeat;
+  background: #080808 url('assets/dark-smart.jpg') center / cover no-repeat;
   overflow: hidden;
 }
 

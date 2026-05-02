@@ -369,7 +369,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   }
 
   .hero-logo-wrap {
-    top: 128px;
+    top: 72px;
     width: min(88vw, 380px);
   }
 
@@ -384,7 +384,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   }
 
   .hero-logo-wrap {
-    top: 148px;
+    top: 78px;
     width: min(86vw, 340px);
   }
 }

@@ -75,7 +75,7 @@ window.addEventListener('load', function initHero() {
   const SLIDE_VISIBLE    = 7000;  // 5s + 2s
   const SLIDE_OVERLAP    = 1800;
   const SLIDES_PER_CYCLE = 4;
-  const MOTTO_DURATION   = 7000;  // 5s + 2s
+  const MOTTO_DURATION   = 8000;  // +1s visibilità motto
 
   const heroSection = document.getElementById('heroSection');
 
@@ -107,11 +107,11 @@ window.addEventListener('load', function initHero() {
     const aw = ph * slide.aspect;
     const left = (W - aw) / 2;
 
-    const safeTop = isMobile ? (isLandscape ? H * 0.22 : H * 0.25) : H * 0.20;
-    const safeBot = isMobile ? (isLandscape ? H * 0.67 : H * 0.70) : H * 0.78;
+    const safeTop = isMobile ? (isLandscape ? H * 0.23 : H * 0.25) : H * 0.20;
+    const safeBot = isMobile ? (isLandscape ? H * 0.68 : H * 0.70) : H * 0.78;
     const availableTopRange = Math.max(0, safeBot - ph - safeTop);
     const top = isMobile && isLandscape
-      ? safeTop + Math.random() * availableTopRange * 0.58
+      ? safeTop + Math.random() * availableTopRange * 0.64
       : safeTop + Math.random() * availableTopRange;
     const el = document.createElement('div');
     el.className = 'hero-photo hero-photo--slide';

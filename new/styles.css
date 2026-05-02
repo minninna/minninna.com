@@ -170,7 +170,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 }
 
 .hero.hero-motto-sequence::before {
-  animation: heroMottoBgSequence 6.6s ease 0s forwards;
+  animation: heroMottoBgSequence 7.6s ease 0s forwards;
 }
 
 /* Contenitore foto flottanti */

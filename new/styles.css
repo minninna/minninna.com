@@ -21,11 +21,11 @@ main{width:min(1480px,calc(100% - 28px));margin:0 auto}
 /* ============================================================
    HEADER & NAV
    ============================================================ */
-.site-header { position: sticky; top: 0; z-index: 40; display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: rgba(10,10,10,.38); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.05); }
+.site-header { position: sticky; top: 0; z-index: 40; display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; background: rgba(10,10,10,.38); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.05); }
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand-wordmark { height: 17px; width: auto; filter: invert(1) brightness(1.06); opacity: .58; }
-.site-nav { display: flex; gap: 16px; font-size: 12px; letter-spacing: .01em; font-weight: 300; }
-.site-nav a { color: rgba(255,255,255,.52); transition: color .3s ease, text-shadow .3s ease; }
+.brand-wordmark { height: 32px; width: auto; opacity: .72; }
+.site-nav { display: flex; gap: 32px; font-size: 13px; letter-spacing: .08em; font-weight: 300; text-transform: uppercase; }
+.site-nav a { color: rgba(255,255,255,.55); transition: color .3s ease, text-shadow .3s ease; }
 .site-nav a:hover { color: rgba(255,255,255,.95); text-shadow: 0 0 18px rgba(255,255,255,.22); }
 
 /* hamburger — hidden on desktop */
@@ -89,6 +89,7 @@ h2:hover { text-shadow: 0 0 36px rgba(246,242,234,.18); }
 .filter-btn-all { text-align: center; }
 .archive-title { color: #111; font-size: clamp(32px,4.2vw,52px); letter-spacing: -.03em; white-space: nowrap; font-weight: 500; }
 @media (max-width: 430px) { .archive-title { font-size: 34px; white-space: nowrap; } }
+.randomshot-panel .archive-title { white-space: normal; overflow-wrap: break-word; font-size: clamp(22px, 3.2vw, 42px); }
 .archive-controls { display: flex; justify-content: flex-start; align-items: center; gap: 14px; margin-bottom: 18px; }
 .filters { display: flex; flex-wrap: wrap; gap: 6px; }
 .filter-btn { white-space: nowrap; }
@@ -154,6 +155,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   min-height: calc(88vh - 70px);
   background: #080808 url('assets/dark-smart.jpg') center / cover no-repeat;
   overflow: hidden;
+  margin-bottom: clamp(48px, 7vh, 88px);
 }
 
 /* Centered motto layer behind floating photos */
@@ -163,7 +165,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  background: url('assets/motto-2026-lowercase-white-transparent-2.png') center 60% / min(38vw, 460px) auto no-repeat;
+  background: url('assets/motto-2026-lowercase-white-transparent-4.png') center 60% / min(38vw, 460px) auto no-repeat;
   opacity: 0;
   animation: heroMottoBgSequence 6.6s ease 1.2s forwards;
 }
@@ -184,9 +186,11 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   border-radius: 10px;
   opacity: 0;
   filter: blur(12px) brightness(.72) contrast(1.03) saturate(.94);
+  transform: translateX(0);
   transition:
     opacity 1.6s ease,
-    filter 2.2s ease;
+    filter 2.2s ease,
+    transform 2s cubic-bezier(.25,.46,.45,.94);
   box-shadow: 0 8px 48px rgba(0,0,0,.6);
   overflow: hidden;
 }
@@ -255,6 +259,12 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 .hero-photo.fading::after {
   opacity: .14;
 }
+/* Uscita: zooma verso il visitatore e dissolve */
+.hero-photo--exit {
+  opacity: 0 !important;
+  filter: blur(8px) brightness(.4) !important;
+  transform: scale(1.18) !important;
+}
 
 /* Scrim leggero solo in alto e in basso per logo e motto */
 .hero-scrim {
@@ -279,7 +289,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 /* ---- Logo in alto centrato ---- */
 .hero-logo-wrap {
   position: absolute;
-  top: clamp(72px, 8vh, 120px);
+  top: clamp(18px, 2.5vh, 36px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
@@ -299,23 +309,26 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 .hero-motto-wrap {
   position: absolute;
   bottom: clamp(48px, 8vh, 80px);
-  left: 50%;
-  transform: translateX(-50%);
+  right: clamp(28px, 4vw, 60px);
+  left: auto;
+  transform: none;
   z-index: 4;
-  text-align: center;
-  white-space: nowrap;
-  display: none;
+  text-align: right;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+  pointer-events: none;
 }
-.hero-motto-line {
-  margin: 0;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 300;
-  font-size: clamp(13px, 1.2vw, 18px);
-  letter-spacing: .18em;
-  color: rgba(255,255,255,.62);
-  line-height: 1.8;
-  text-transform: lowercase;
+.hero-motto-wrap.visible {
+  opacity: 1;
 }
+.hero-motto-img {
+  width: min(280px, 38vw);
+  height: auto;
+  display: block;
+  mix-blend-mode: screen;
+  opacity: .88;
+}
+.hero-motto-line { display: none; }
 
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateX(-50%) translateY(8px); }
@@ -357,12 +370,8 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
     width: min(88vw, 380px);
   }
 
-  .hero-motto-line {
-    font-size: clamp(11px, 3.2vw, 15px);
-    letter-spacing: .12em;
-    white-space: normal;
-  }
-  .hero-motto-wrap { width: 80vw; white-space: normal; }
+  .hero-motto-line { display: none; }
+  .hero-motto-wrap { width: 80vw; }
 }
 
 @media (max-width: 430px) {

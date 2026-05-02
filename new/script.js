@@ -58,97 +58,80 @@ window.addEventListener('load', function initHero() {
 
   const pool = [...heroSlidesDesktop].sort(() => Math.random() - .5);
   let poolIndex = 0;
-  const maxVisible = 3;
-  const showEvery  = 7000;  // ms tra un'apparizione
-  const resetAfter = 28000; // ms prima del reset — 3 foto × 7s = 21s + 7s di pausa
-  const introSequenceDelay = 8200; // 1) motto hero 2) pausa 3) dissolvenza/zoom 4) slideshow
-  const activeCards = [];
-  let zCounter = 2;
-  let spawnCount = 0;
+  let isRunning = false;
 
-  function rand(min, max) { return Math.random() * (max - min) + min; }
+  const SLIDE_VISIBLE    = 7000;  // 5s + 2s
+  const SLIDE_OVERLAP    = 1800;
+  const SLIDES_PER_CYCLE = 4;
+  const MOTTO_DURATION   = 7000;  // 5s + 2s
 
-  function spawnPhoto() {
-    if (!heroPhotosEl) return;
+  const mottoEl = document.querySelector('.hero-motto-wrap');
+
+  function showMotto() {
+    if (!mottoEl) return;
+    mottoEl.classList.add('visible');
+    setTimeout(() => {
+      mottoEl.classList.remove('visible');
+      setTimeout(runCycle, 1200);
+    }, MOTTO_DURATION);
+  }
+
+  function makeSlide(slide) {
     const W = heroPhotosEl.offsetWidth;
     const H = heroPhotosEl.offsetHeight;
-
-    const slide = pool[poolIndex % pool.length];
-    poolIndex++;
-    spawnCount++;
-
-    // Larghezza 30-42% — cap altezza al 60% hero per le verticali
-    const pw  = W * rand(.30, .42);
-    const ph  = Math.min(pw / slide.aspect, H * .60);
-    const aw  = ph * slide.aspect; // larghezza effettiva dopo il cap
-
-    // Zone sicure: evita logo (top 17%) e motto (bottom 13%)
-    const safeTop = H * .17;
-    const safeBot = H * .87;
-
-    // Posizione: massimizza distanza dai centri delle card già visibili
-    const margin = 0.03;
-    let bestLeft = rand(W * margin, W - aw - W * margin);
-    let bestTop  = rand(safeTop, Math.max(safeTop + 1, safeBot - ph));
-    let bestDist = -1;
-
-    const attempts = 18;
-    for (let i = 0; i < attempts; i++) {
-      const cl = rand(W * margin, W - aw - W * margin);
-      const ct = rand(safeTop, Math.max(safeTop + 1, safeBot - ph));
-      const cx = cl + aw / 2;
-      const cy = ct + ph / 2;
-
-      let minDist = Infinity;
-      activeCards.forEach(card => {
-        const ex = parseFloat(card.style.left) + parseFloat(card.style.width)  / 2;
-        const ey = parseFloat(card.style.top)  + parseFloat(card.style.height) / 2;
-        const d  = Math.hypot(cx - ex, cy - ey);
-        if (d < minDist) minDist = d;
-      });
-
-      if (activeCards.length === 0) minDist = Infinity;
-      if (minDist > bestDist) { bestDist = minDist; bestLeft = cl; bestTop = ct; }
-    }
-
-    const left = bestLeft;
-    const top  = bestTop;
-
+    const pw = W * (0.38 + Math.random() * 0.14);
+    const ph = Math.min(pw / slide.aspect, H * 0.64);
+    const aw = ph * slide.aspect;
+    const left = (W - aw) / 2;
+    const safeTop = H * 0.20;
+    const safeBot = H * 0.78;
+    const top = safeTop + Math.random() * Math.max(0, safeBot - ph - safeTop);
     const el = document.createElement('div');
-    const edgeVariant = Math.floor(Math.random() * 4) + 1;
-    el.className = `hero-photo edge-rough-${edgeVariant}`;
-    el.style.cssText = `width:${aw}px;height:${ph}px;top:${top}px;left:${left}px;background-image:url("${slide.low}");z-index:${++zCounter};`;
+    el.className = 'hero-photo hero-photo--slide';
+    el.style.cssText = `width:${aw}px;height:${ph}px;top:${top}px;left:${left}px;background-image:url("${slide.low}");z-index:3;`;
     heroPhotosEl.appendChild(el);
-
     const img = new Image();
     img.onload = () => { el.style.backgroundImage = `url("${slide.high}")`; };
     img.src = slide.high;
-
-    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
-    activeCards.push(el);
-
-    if (activeCards.length > maxVisible) {
-      const old = activeCards.shift();
-      old.classList.remove('visible');
-      old.classList.add('fading');
-      setTimeout(() => old.remove(), 2400);
-    }
-
-    setTimeout(spawnPhoto, showEvery);
+    return el;
   }
 
-  setTimeout(spawnPhoto, introSequenceDelay);
+  function runCycle() {
+    if (isRunning) return;
+    isRunning = true;
+    let slideIndex = 0;
+    let currentEl = null;
 
-  // Reset completo: tutte svaniscono → nero → ricomincia
-  setInterval(() => {
-    activeCards.forEach(el => {
-      el.classList.remove('visible');
-      el.classList.add('fading');
-      setTimeout(() => el.remove(), 2400);
-    });
-    activeCards.length = 0;
-    spawnCount = 0;
-  }, resetAfter);
+    function nextSlide() {
+      if (slideIndex >= SLIDES_PER_CYCLE) {
+        if (currentEl) {
+          currentEl.classList.add('hero-photo--exit');
+          setTimeout(() => { if (currentEl) currentEl.remove(); }, 1800);
+          currentEl = null;
+        }
+        isRunning = false;
+        setTimeout(showMotto, 2200);
+        return;
+      }
+      const slide = pool[poolIndex % pool.length];
+      poolIndex++;
+      slideIndex++;
+      const el = makeSlide(slide);
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
+      currentEl = el;
+      setTimeout(() => {
+        el.classList.add('hero-photo--exit');
+        setTimeout(() => { el.remove(); }, 1800);
+        currentEl = null;
+        setTimeout(nextSlide, SLIDE_OVERLAP);
+      }, SLIDE_VISIBLE);
+    }
+
+    nextSlide();
+  }
+
+  // Avvio: motto, poi ciclo
+  setTimeout(showMotto, 800);
 });
 
 const preferredCategories = [

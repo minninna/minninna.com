@@ -607,7 +607,7 @@ function fitSubtitle() {
   }
 }
 
-window.addEventListener("load", fitSubtitle);
 window.addEventListener("resize", fitSubtitle);
+document.fonts.ready.then(fitSubtitle);
 </script></body>
 </html>

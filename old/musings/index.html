@@ -817,8 +817,7 @@
                 const titleEl = entry.querySelector('.musing-title');
                 const musingTitle = titleEl ? titleEl.textContent.trim() : '';
                 gtag('event', 'musing_open', {
-                  musing_title: musingTitle,
-                  event_label: musingTitle
+                  musing_title: musingTitle
                 });
               }
             });

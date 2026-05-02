@@ -3,6 +3,24 @@
  
 const MUSINGS = [ 
   {
+    date: '20260430',
+    title: 'Photography is when...',
+    content: `Back to yesterday's thought: we all take photos, photography is when the photo takes us`
+  }
+,  
+  {
+    date: '20260429',
+    title: 'To be or not to be',
+    content: `To be or not to be a photograph; that is the question.\nBut more to the point: are we making photographs or merely recording images?`
+  }
+,  
+  {
+    date: '20260428',
+    title: 'The song behind the image',
+    content: `It's a game I've been playing for years\nmy two oldest obsessions, talking to each other.\nEvery photograph has a song behind it.\nA title, a few lyrics.\nNot a caption, something that was already there, quietly.\nSomeone noticed. That made me smile.`
+  }
+,  
+  {
     date: '20260427',
     title: 'The practice of seeing',
     content: `Observation is a beginning.\nHonesty is what makes it real.\nWithout it, you get lost\nin assumptions, projections, distortions.\nSo you train it.\nLike a muscle.\nAnd slowly, things clear.\nYou see more.\nAnd in seeing more,\nthere’s a little more freedom.`

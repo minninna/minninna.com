@@ -1,7 +1,6 @@
 const photos = photoDatabase.photos || [];
 const categories = ['all', ...(photoDatabase.categories || []).filter(Boolean)];
 
-const heroMedia = document.getElementById('heroMedia');
 const selectedGrid = document.getElementById('selectedGrid');
 const archiveGrid = document.getElementById('archiveGrid');
 const filtersEl = document.getElementById('filters');
@@ -24,89 +23,147 @@ let currentList = [];
 let currentIndex = 0;
 
 // ── HERO SLIDESHOW ──────────────────────────────────────────
-const heroMediaA = document.getElementById('heroMediaA');
-const heroMediaB = document.getElementById('heroMediaB');
+// ============================================================
+// HERO — foto flottanti su sfondo nero
+// ============================================================
+
+const heroPhotosEl = null; // definito dentro initHero
 
 const heroSlidesDesktop = [
-  { // White Bird — landscape 600x480, soggetto centrato
-    low:  'https://drscdn.500px.org/photo/1110775529/q%3D75_m%3D600/v2?sig=42a29cc425c8f4bb98ba347c4f213bb2ec8370d5d2f4a53d75d5dfbbd3741367',
+  { low: 'https://drscdn.500px.org/photo/1110775529/q%3D75_m%3D600/v2?sig=42a29cc425c8f4bb98ba347c4f213bb2ec8370d5d2f4a53d75d5dfbbd3741367',
     high: 'https://drscdn.500px.org/photo/1110775529/q%3D80_m%3D1024/v2?sig=428efc7235047684f2df75388b6f0fc29a0194ab7816c8d333608d64c0950f11',
-    pos:  'center 40%'
-  },
-  { // One Fine Day — landscape 600x499
-    low:  'https://drscdn.500px.org/photo/1111867251/q%3D75_m%3D600/v2?sig=a9177f322421fd0545fff09f9516a00d6928dab84f1ddb2abf22869711971b9c',
+    aspect: 16/10 },
+  { low: 'https://drscdn.500px.org/photo/1111867251/q%3D75_m%3D600/v2?sig=a9177f322421fd0545fff09f9516a00d6928dab84f1ddb2abf22869711971b9c',
     high: 'https://drscdn.500px.org/photo/1111867251/q%3D80_m%3D1024/v2?sig=aa4ebf816bc37bced2193cf67ccf81d0839c5440bd5b66beb32e6c4c94a72e06',
-    pos:  'center 35%'
-  },
-  { // I Didn't Know I Was Looking for Love — landscape 600x402
-    low:  'https://drscdn.500px.org/photo/1118124011/q%3D75_m%3D600/v2?sig=56d0e31104d45300a4df82933ce208e17e970845de35ce1da1224982da33fe43',
-    high: 'https://drscdn.500px.org/photo/1118124011/q%3D90_m%3D2048/v2?sig=8b74fcef261b7dbfd5d360067150b02d894b2b7638846868c02bd603b6c6343e',
-    pos:  'center 45%'
-  }
-];
-
-const heroSlidesMobile = [
-  { // Here Comes The Sun — portrait 536x600
-    low:  'https://drscdn.500px.org/photo/1110537354/q%3D75_m%3D600/v2?sig=1b6cac23c1677a8bbb7bde3ea0b4f77c53e7fdb8d87e37eb4058f5d875db5c50',
+    aspect: 16/10 },
+  { low: 'https://drscdn.500px.org/photo/1110800360/q%3D75_m%3D600/v2?sig=c5f83659acfd59e525765f92774eaddea4e1e44d844df72ee07ea3cc1fead8c6',
+    high: 'https://drscdn.500px.org/photo/1110800360/q%3D80_m%3D1024/v2?sig=1d6778009d1aa8af8e464394d0e0bdca4fd6e3f0933af0abe1b6bb5f92dd8491',
+    aspect: 5/4 },
+  { low: 'https://drscdn.500px.org/photo/1117038191/q%3D75_m%3D600/v2?sig=e4195f785a4e5e2b45ec3e2ec5e4963126f3018726dd4c99988b3c8f77a1aa72',
+    high: 'https://drscdn.500px.org/photo/1117038191/q%3D80_m%3D1024/v2?sig=97d65386c854a368d73b0eb4ddd9fb15b2b99c6842af6ee1a31917f932d6108f',
+    aspect: 3/2 },
+  { low: 'https://drscdn.500px.org/photo/1110537354/q%3D75_m%3D600/v2?sig=1b6cac23c1677a8bbb7bde3ea0b4f77c53e7fdb8d87e37eb4058f5d875db5c50',
     high: 'https://drscdn.500px.org/photo/1110537354/q%3D80_m%3D1024/v2?sig=002d89224813467530b7040c08b3b75f4f8dac096b02519857efe60eafaab5c7',
-    pos:  'center 30%'
-  },
-  { // The Man Comes Around — portrait 400x600
-    low:  'https://drscdn.500px.org/photo/1109887005/q%3D75_m%3D600/v2?sig=1a2029922ec923b964a3e5b9a57439c53faa61cc36e2e448ff7d5d8216b99156',
+    aspect: 9/16 },
+  { low: 'https://drscdn.500px.org/photo/1109887005/q%3D75_m%3D600/v2?sig=1a2029922ec923b964a3e5b9a57439c53faa61cc36e2e448ff7d5d8216b99156',
     high: 'https://drscdn.500px.org/photo/1109887005/q%3D75_m%3D600/v2?sig=1a2029922ec923b964a3e5b9a57439c53faa61cc36e2e448ff7d5d8216b99156',
-    pos:  'center 25%'
-  },
-  { // Sanctify Yourself — portrait 450x600
-    low:  'https://drscdn.500px.org/photo/1110542817/q%3D75_m%3D600/v2?sig=35f4407bb1f0dd25999c1ceee6a0a59ff1bdebe03596c0a0f60ca1a0712c3014',
-    high: 'https://drscdn.500px.org/photo/1110542817/q%3D75_m%3D600/v2?sig=35f4407bb1f0dd25999c1ceee6a0a59ff1bdebe03596c0a0f60ca1a0712c3014',
-    pos:  'center 30%'
-  }
+    aspect: 2/3 },
 ];
 
-let heroIndex = 0;
-let heroActiveLayer = 'a'; // which layer is currently showing
+const heroSlidesMobile = heroSlidesDesktop; // stesso pool su mobile
+const HERO_BG_SRC = 'assets/dark-smart.jpg';
+const HERO_START_DELAY = 1600;
+const HERO_MOTTO_BG_TOTAL = 7600; // 6.6s motto + 1s respiro
+const HERO_MOTTO_EXIT_WAIT = 1000; // 1s di respiro dopo la scomparsa del motto
 
-function getSlides() {
-  return window.innerWidth <= 768 ? heroSlidesMobile : heroSlidesDesktop;
+function preloadImage(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = img.onerror = () => resolve();
+    img.src = src;
+  });
 }
 
-function applySlide(layer, slide) {
-  const el = layer === 'a' ? heroMediaA : heroMediaB;
-  // blur-up: load low first, then high
-  el.style.backgroundImage = `url("${slide.low}")`;
-  el.style.backgroundPosition = slide.pos;
-  const img = new Image();
-  img.onload = () => { el.style.backgroundImage = `url("${slide.high}")`; };
-  img.src = slide.high;
-}
+window.addEventListener('load', function initHero() {
+  const heroPhotosEl = document.getElementById('heroPhotos');
+  if (!heroPhotosEl) return;
 
-function heroNext() {
-  const slides = getSlides();
-  heroIndex = (heroIndex + 1) % slides.length;
-  const next = slides[heroIndex];
+  const pool = [...heroSlidesDesktop].sort(() => Math.random() - .5);
+  let poolIndex = 0;
+  let isRunning = false;
 
-  if (heroActiveLayer === 'a') {
-    // load into B, then crossfade B over A
-    applySlide('b', next);
-    heroMediaB.classList.add('active');
-    heroMediaA.classList.add('fade-out');
-    heroActiveLayer = 'b';
-  } else {
-    // load into A, then crossfade A over B
-    applySlide('a', next);
-    heroMediaA.classList.remove('fade-out');
-    heroMediaB.classList.remove('active');
-    heroActiveLayer = 'a';
+  const SLIDE_VISIBLE    = 7000;  // 5s + 2s
+  const SLIDE_OVERLAP    = 1800;
+  const SLIDES_PER_CYCLE = 4;
+  const MOTTO_DURATION   = 8000;  // +1s visibilità motto
+
+  const heroSection = document.getElementById('heroSection');
+
+  function showMotto() {
+    if (!heroSection) {
+      setTimeout(runCycle, HERO_MOTTO_EXIT_WAIT);
+      return;
+    }
+
+    heroSection.classList.remove('hero-motto-sequence');
+    void heroSection.offsetWidth; // riavvia l'animazione anche nei cicli successivi
+    heroSection.classList.add('hero-motto-sequence');
+
+    setTimeout(() => {
+      heroSection.classList.remove('hero-motto-sequence');
+      setTimeout(runCycle, HERO_MOTTO_EXIT_WAIT);
+    }, MOTTO_DURATION);
   }
-}
 
-// Init: load first slide on A
-applySlide('a', getSlides()[0]);
-// 12s display, then crossfade 2s, repeat every 14s
-setTimeout(() => {
-  heroNext();
-  setInterval(heroNext, 14000);
-}, 12000);
+  function makeSlide(slide) {
+    const W = heroPhotosEl.offsetWidth;
+    const H = heroPhotosEl.offsetHeight;
+    const isMobile = W <= 768;
+    const isLandscape = slide.aspect > 1.08;
+
+    // Foto più grandi e area sicura più bassa: in mobile non devono finire dietro al logo.
+    const pw = W * (isMobile ? (0.76 + Math.random() * 0.10) : (0.46 + Math.random() * 0.10));
+    const ph = Math.min(pw / slide.aspect, H * (isMobile ? 0.48 : 0.62));
+    const aw = ph * slide.aspect;
+    const left = (W - aw) / 2;
+
+    const safeTop = isMobile ? (isLandscape ? H * 0.23 : H * 0.25) : H * 0.20;
+    const safeBot = isMobile ? (isLandscape ? H * 0.68 : H * 0.70) : H * 0.78;
+    const availableTopRange = Math.max(0, safeBot - ph - safeTop);
+    const top = isMobile && isLandscape
+      ? safeTop + Math.random() * availableTopRange * 0.64
+      : safeTop + Math.random() * availableTopRange;
+    const el = document.createElement('div');
+    el.className = 'hero-photo hero-photo--slide';
+    el.style.cssText = `width:${aw}px;height:${ph}px;top:${top}px;left:${left}px;background-image:url("${slide.low}");z-index:3;`;
+    heroPhotosEl.appendChild(el);
+    const img = new Image();
+    img.onload = () => { el.style.backgroundImage = `url("${slide.high}")`; };
+    img.src = slide.high;
+    return el;
+  }
+
+  function runCycle() {
+    if (isRunning) return;
+    isRunning = true;
+    let slideIndex = 0;
+    let currentEl = null;
+
+    function nextSlide() {
+      if (slideIndex >= SLIDES_PER_CYCLE) {
+        if (currentEl) {
+          currentEl.classList.add('hero-photo--exit');
+          setTimeout(() => { if (currentEl) currentEl.remove(); }, 1800);
+          currentEl = null;
+        }
+        isRunning = false;
+        setTimeout(showMotto, 1000);
+        return;
+      }
+      const slide = pool[poolIndex % pool.length];
+      poolIndex++;
+      slideIndex++;
+      const el = makeSlide(slide);
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
+      currentEl = el;
+      setTimeout(() => {
+        el.classList.add('hero-photo--exit');
+        setTimeout(() => { el.remove(); }, 1800);
+        currentEl = null;
+        setTimeout(nextSlide, SLIDE_OVERLAP);
+      }, SLIDE_VISIBLE);
+    }
+
+    nextSlide();
+  }
+
+  // Avvio: preload sfondo hero, piccolo respiro, poi motto/slideshow
+  preloadImage(HERO_BG_SRC).finally(() => {
+    setTimeout(() => {
+      showMotto();
+    }, HERO_START_DELAY);
+  });
+});
 
 const preferredCategories = [
   'Moments & Mates',
@@ -402,6 +459,18 @@ function renderRandomShot() {
 
 const scrollIndicator = document.getElementById('scrollIndicator');
 const backToTop = document.getElementById('backToTop');
+const navBrand = document.getElementById('navBrand');
+const heroSection = document.getElementById('heroSection');
+
+// Nascondi brand wordmark quando la hero è visibile
+if (navBrand && heroSection) {
+  const brandObserver = new IntersectionObserver(
+    ([entry]) => navBrand.classList.toggle('hero-hidden', entry.isIntersecting),
+    { threshold: 0.1 }
+  );
+  brandObserver.observe(heroSection);
+}
+
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   if (scrollIndicator) scrollIndicator.classList.toggle('hidden', y > 80);

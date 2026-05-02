@@ -34,7 +34,7 @@
 <!-- Canonical URL -->
 <link href="https://minninna.com/" rel="canonical"/>
 <!-- Favicons -->
-<link href="assets/M symbol 3.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/M-symbol-4.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
@@ -66,6 +66,8 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://drscdn.500px.org" rel="preconnect"/>
 <link href="https://www.googletagmanager.com" rel="dns-prefetch"/>
+<!-- Preload hero background -->
+<link as="image" fetchpriority="high" href="assets/dark-smart.jpg" rel="preload" type="image/jpeg"/>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <!-- Google Analytics -->
@@ -302,8 +304,8 @@
 <body>
 <button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
 <header class="site-header intro-fade">
-<a aria-label="Max Minninna home" class="brand" href="#top">
-<img alt="Max Minninna" class="brand-wordmark" src="assets/mmlogo_250.svg"/>
+<a aria-label="Max Minninna home" class="brand" href="#top" id="navBrand">
+<img alt="M" class="brand-wordmark" src="assets/M-symbol-4.svg"/>
 </a>
 <!-- Nav desktop: tutti i link per esteso -->
 <nav class="site-nav site-nav--desktop" id="siteNav">
@@ -329,31 +331,20 @@
 <main id="top">
 <!-- SEO: h1 nascosto per crawler -->
 <h1 style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">Photographer based in Milan</h1>
-<section class="hero intro-rise" id="heroSection">
-<div class="hero-media hero-media-a" id="heroMediaA"></div>
-<div class="hero-media hero-media-b" id="heroMediaB"></div>
-<div class="hero-scrim"></div>
-<!-- composizione mobile: logo animato centrato + testo in basso -->
-<div class="hero-mobile-composition">
-<div class="hero-mob-bottom">
-<a aria-label="Scroll to portfolio" href="#selected">
-<img alt="Portfolio MMXXVI" class="hero-mob-portfolio" src="assets/portfolio-mmxxvi.svg"/>
-</a>
-</div>
-</div>
-<!-- composizione desktop: overlay destra -->
-<div class="hero-right-composition">
-<a aria-label="Scroll to portfolio" class="hero-title-svg-wrap" href="#selected">
-<img alt="Portfolio MMXXVI" class="hero-title-svg" src="assets/portfolio-mmxxvi.svg"/>
-</a>
-</div>
-<div class="hero-scroll-indicator" id="scrollIndicator">
-<span>scroll</span>
-<div class="scroll-arrow"></div>
-</div>
-<div class="hero-mark-bottomleft">
-<img alt="" src="assets/M symbol 3.svg"/>
-</div>
+<section class="hero" id="heroSection">
+  <!-- sfondo nero fisso — le foto flottano sopra -->
+  <div class="hero-photos" id="heroPhotos"></div>
+  <div class="hero-scrim"></div>
+
+  <!-- logo in alto centrato -->
+  <div class="hero-logo-wrap">
+    <img alt="Max Minninna" class="hero-logo" src="assets/MAX-MINNINNA-logo-2026-white-transparent.svg"/>
+  </div>
+
+  <div class="hero-scroll-indicator" id="scrollIndicator">
+    <span>scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
 </section>
 <div style="height: 28px;"></div>
 <section class="topshots-section intro-rise delay-1" id="latest">
@@ -397,7 +388,7 @@
 <div class="selected-grid-wrap">
 <div class="selected-grid selected-grid-categories" id="selectedGrid"></div>
 <button aria-label="Show all categories" class="center-mark" id="centerAll" type="button">
-<img alt="" src="assets/M symbol 3.svg"/>
+<img alt="" src="assets/M-symbol-4.svg"/>
 </button>
 </div>
 </section>
@@ -575,7 +566,7 @@ It becomes a quiet shift:</p>
 </dialog>
 <footer class="site-footer">
 <div class="site-footer-inner">
-<img alt="" class="footer-symbol" src="assets/M symbol 3.svg"/>
+<img alt="" class="footer-symbol" src="assets/M-symbol-4.svg"/>
 <p class="footer-copy">© 2026 Max Minninna. All rights reserved.<br/>All photographic, textual, and visual content on this website is the exclusive property of the author and may not be reproduced, distributed, or used without prior written authorization.</p>
 </div>
 </footer>

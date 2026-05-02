@@ -329,7 +329,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
   height: auto;
   display: block;
   mix-blend-mode: screen;
-  opacity: .88;
+  opacity: .94;
 }
 .hero-motto-line { display: none; }
 
@@ -344,11 +344,11 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
     transform: scale(1);
   }
   20% {
-    opacity: .14;
+    opacity: .22;
     transform: scale(1);
   }
   58% {
-    opacity: .14;
+    opacity: .22;
     transform: scale(1);
   }
   100% {
@@ -365,7 +365,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 
   .hero::before {
     background-size: min(52vw, 320px);
-    background-position: center 50%;
+    background-position: center 46%;
   }
 
   .hero-logo-wrap {
@@ -380,7 +380,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 @media (max-width: 430px) {
   .hero::before {
     background-size: min(60vw, 270px);
-    background-position: center 51%;
+    background-position: center 47%;
   }
 
   .hero-logo-wrap {

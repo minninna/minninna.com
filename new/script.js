@@ -99,6 +99,7 @@ window.addEventListener('load', function initHero() {
     const W = heroPhotosEl.offsetWidth;
     const H = heroPhotosEl.offsetHeight;
     const isMobile = W <= 768;
+    const isLandscape = slide.aspect > 1.08;
 
     // Foto più grandi e area sicura più bassa: in mobile non devono finire dietro al logo.
     const pw = W * (isMobile ? (0.76 + Math.random() * 0.10) : (0.46 + Math.random() * 0.10));
@@ -106,10 +107,12 @@ window.addEventListener('load', function initHero() {
     const aw = ph * slide.aspect;
     const left = (W - aw) / 2;
 
-    const safeTop = isMobile ? H * 0.25 : H * 0.20;
-    const safeBot = isMobile ? H * 0.70 : H * 0.78;
+    const safeTop = isMobile ? (isLandscape ? H * 0.20 : H * 0.25) : H * 0.20;
+    const safeBot = isMobile ? (isLandscape ? H * 0.64 : H * 0.70) : H * 0.78;
     const availableTopRange = Math.max(0, safeBot - ph - safeTop);
-    const top = safeTop + Math.random() * availableTopRange;
+    const top = isMobile && isLandscape
+      ? safeTop + Math.random() * availableTopRange * 0.45
+      : safeTop + Math.random() * availableTopRange;
     const el = document.createElement('div');
     el.className = 'hero-photo hero-photo--slide';
     el.style.cssText = `width:${aw}px;height:${ph}px;top:${top}px;left:${left}px;background-image:url("${slide.low}");z-index:3;`;

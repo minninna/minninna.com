@@ -107,11 +107,11 @@ window.addEventListener('load', function initHero() {
     const aw = ph * slide.aspect;
     const left = (W - aw) / 2;
 
-    const safeTop = isMobile ? (isLandscape ? H * 0.20 : H * 0.25) : H * 0.20;
-    const safeBot = isMobile ? (isLandscape ? H * 0.64 : H * 0.70) : H * 0.78;
+    const safeTop = isMobile ? (isLandscape ? H * 0.22 : H * 0.25) : H * 0.20;
+    const safeBot = isMobile ? (isLandscape ? H * 0.67 : H * 0.70) : H * 0.78;
     const availableTopRange = Math.max(0, safeBot - ph - safeTop);
     const top = isMobile && isLandscape
-      ? safeTop + Math.random() * availableTopRange * 0.45
+      ? safeTop + Math.random() * availableTopRange * 0.58
       : safeTop + Math.random() * availableTopRange;
     const el = document.createElement('div');
     el.className = 'hero-photo hero-photo--slide';

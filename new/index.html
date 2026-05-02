@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- SEO Meta Tags -->
+<title>Max Minninna | Milan-based Photographer</title>
+<meta content="Milan-based photographer focused on portraits, editorial work and visual storytelling. Available for selected projects worldwide." name="description"/>
+<meta content="Max Minninna, photographer Milan, portrait photography Milan, editorial photography, philosographer, portfolio fotografico, fotografia artistica" name="keywords"/>
+<meta content="Max Minninna" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="en" name="language"/>
+<!-- GEO -->
+<meta content="IT-MI" name="geo.region"/>
+<meta content="Milan" name="geo.placename"/>
+<meta content="45.4654;9.1866" name="geo.position"/>
+<meta content="45.4654, 9.1866" name="ICBM"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://minninna.com/" property="og:url"/>
+<meta content="Max Minninna | Milan-based Photographer" property="og:title"/>
+<meta content="Milan-based photographer focused on portraits, editorial work and visual storytelling. Available for selected projects worldwide." property="og:description"/>
+<meta content="https://minninna.com/images/og-image.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="it_IT" property="og:locale"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://minninna.com/" property="twitter:url"/>
+<meta content="Max Minninna | Milan-based Photographer" property="twitter:title"/>
+<meta content="Milan-based photographer focused on portraits, editorial work and visual storytelling. Available for selected projects worldwide." property="twitter:description"/>
+<meta content="https://minninna.com/images/twitter-image.jpg" property="twitter:image"/>
+<!-- Canonical URL -->
+<link href="https://minninna.com/" rel="canonical"/>
+<!-- Favicons -->
+<link href="assets/M-symbol-4.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="#0b0b0b" name="theme-color"/>
+<!-- Structured Data -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Max Minninna",
+    "jobTitle": "Philosographer",
+    "description": "Fotografo filosofo e artista visivo",
+    "url": "https://minninna.com",
+    "sameAs": [
+      "https://500px.com/p/minninna",
+      "mailto:foto.minninna@gmail.com"
+    ],
+    "image": "https://minninna.com/images/og-image.jpg",
+    "workLocation": {
+      "@type": "Place",
+      "name": "Milano, Italia"
+    }
+  }
+  </script>
+<!-- Preconnections for Performance -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://drscdn.500px.org" rel="preconnect"/>
+<link href="https://www.googletagmanager.com" rel="dns-prefetch"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3JT8JCZRDM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3JT8JCZRDM', {
+      page_title: 'Max Minninna Portfolio',
+      page_location: window.location.href,
+      send_page_view: true
+    });
+    function trackEvent(eventName, category, label) {
+      gtag('event', eventName, {
+        event_category: category,
+        event_label: label
+      });
+    }
+  </script>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+.musings-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* enter label + arrow row */
+.musings-enter {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  margin: 0 0 clamp(4px, .4vw, 6px);
+  font-size: clamp(8px, .7vw, 10px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(175,133,112,.5);
+  transition: color 0.25s ease;
+}
+
+.musings-enter svg {
+  flex-shrink: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: .5;
+}
+
+.musings-link:hover .musings-enter {
+  color: rgba(175,133,112,.9);
+}
+
+.musings-link:hover .musings-enter svg {
+  transform: translateX(5px);
+  opacity: 1;
+}
+
+/* My Musings main */
+.musings-main {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(18px, 1.8vw, 32px);
+  line-height: .86;
+  font-weight: 200;
+  font-variation-settings: "wght" 200;
+  letter-spacing: -0.085em;
+  color: rgba(246,242,234,.72);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: color 0.25s ease;
+}
+
+.musings-link:hover .musings-main {
+  color: rgba(246,242,234,1);
+}
+
+.musings-main .mm {
+  font-weight: 500;
+  font-variation-settings: "wght" 500;
+  letter-spacing: -0.09em;
+}
+
+.musings-word-gap {
+  display: inline-block;
+  width: .10em;
+}
+
+.musings-sub {
+  display: inline-block;
+  margin-top: clamp(5px, .5vw, 8px);
+  font-size: clamp(8px, .75vw, 11px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: rgba(246,242,234,.5);
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.musings-link:hover .musings-sub {
+  color: rgba(246,242,234,.75);
+}
+
+@media (max-width: 640px) {
+  .musings-main {
+    font-size: clamp(20px, 6vw, 28px);
+    letter-spacing: -.072em;
+  }
+  .musings-sub {
+    font-size: 8px;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .musings-main {
+    font-size: clamp(16px, 5vw, 20px);
+  }
+  .musings-enter {
+    font-size: 7.5px;
+  }
+}
+
+
+/* ===== Musings layout: single source of truth ===== */
+#bio .bio-aside {
+  position: relative;
+  overflow: visible;
+}
+/* Desktop: motto centered, musings bottom-right */
+@media (min-width: 901px) {
+  #bio .bio-aside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* motto al centro */
+    align-items: center;
+  }
+  #bio .bio-aside .bio-motto-wrap {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    transform: translateY(18px); /* aumenta per farlo scendere */
+  }
+  #bio .bio-aside .musings-link {
+    position: absolute;
+    right: 12px;
+    bottom: 16px;
+    margin: 0;
+    transform: none;
+    z-index: 1;
+    align-self: auto;
+  }
+}
+/* Tablet/mobile */
+@media (max-width: 900px) {
+  #bio .bio-aside {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    min-height: 360px;
+    margin: 22px 0 28px;
+    padding: 28px 0 34px;
+    position: relative;
+    overflow: visible;
+  }
+  #bio .bio-aside::before {
+    content: '';
+    position: absolute;
+    inset: -14% 4% -10% 4%;
+    background: url('assets/philosographer_bokeh.jpg') center 42% / cover no-repeat;
+    opacity: .28;
+    -webkit-mask-image: radial-gradient(ellipse 70% 64% at 50% 50%, black 22%, rgba(0,0,0,.75) 52%, transparent 82%);
+    mask-image: radial-gradient(ellipse 70% 64% at 50% 50%, black 22%, rgba(0,0,0,.75) 52%, transparent 82%);
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+  }
+  #bio .bio-aside .bio-motto-wrap {
+    grid-row: 1;
+    max-width: 220px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    transform: none;
+  }
+  #bio .bio-aside .musings-link {
+    grid-row: 2;
+    justify-self: end;
+    align-self: end;
+    margin: 40px 22px 0 0;
+    position: relative;
+    transform: none;
+    z-index: 1;
+  }
+}
+@media (max-width: 640px) {
+  #bio .bio-aside {
+    min-height: 350px;
+    padding-bottom: 38px;
+  }
+  #bio .bio-aside .musings-link {
+    margin: 48px 18px 0 0;
+  }
+}
+
+/* --- final stacking + desktop bg fix --- */
+
+/* Desktop: disable pseudo background */
+@media (min-width: 901px) {
+  #bio .bio-aside::before {
+    content: none;
+  }
+}
+
+/* Mobile: ensure proper stacking */
+@media (max-width: 900px) {
+  #bio .bio-aside .bio-motto-wrap,
+  #bio .bio-aside .musings-link {
+    position: relative;
+    z-index: 1;
+  }
+}
+</style></head>
+<body>
+<button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
+<header class="site-header intro-fade">
+<a aria-label="Max Minninna home" class="brand" href="#top" id="navBrand">
+<img alt="M" class="brand-wordmark" src="assets/M-symbol-4.svg"/>
+</a>
+<!-- Nav desktop: tutti i link per esteso -->
+<nav class="site-nav site-nav--desktop" id="siteNav">
+<a href="#latest">Latest</a>
+<a href="#topshots">Popular</a>
+<a href="#selected">Collections</a>
+<a href="#archive">Portfolio</a>
+<a href="#bio">MM</a>
+<a href="#contact">Contact</a>
+</nav>
+<!-- Nav mobile: voci sintetiche -->
+<nav class="site-nav site-nav--mobile">
+<a href="#latest">New</a>
+<a href="#topshots">Pop</a>
+<a href="#selected">Collections</a>
+<a href="#bio">MM</a>
+<a href="#contact">Contact</a>
+</nav>
+<button aria-label="Menu" class="nav-hamburger" id="navHamburger" style="display:none">
+<span></span><span></span><span></span>
+</button>
+</header>
+<main id="top">
+<!-- SEO: h1 nascosto per crawler -->
+<h1 style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">Photographer based in Milan</h1>
+<section class="hero" id="heroSection">
+  <!-- sfondo nero fisso — le foto flottano sopra -->
+  <div class="hero-photos" id="heroPhotos"></div>
+  <div class="hero-scrim"></div>
+
+  <!-- logo in alto centrato -->
+  <div class="hero-logo-wrap">
+    <img alt="Max Minninna" class="hero-logo" src="assets/MAX-MINNINNA-logo-2026-white-transparent.svg"/>
+  </div>
+
+  <div class="hero-motto-wrap">
+    <img alt="we all take photos — photography is when the photo takes us" class="hero-motto-img" src="assets/motto-2026.png"/>
+  </div>
+
+  <div class="hero-scroll-indicator" id="scrollIndicator">
+    <span>scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+<div style="height: 28px;"></div>
+<section class="topshots-section intro-rise delay-1" id="latest">
+<div class="archive-panel">
+<div class="archive-topbar">
+<div>
+<p class="eyebrow eyebrow-dark">Latest shots</p>
+<h2 class="archive-title">Just added</h2>
+</div>
+</div>
+<div class="archive-grid topshots-grid" id="latestGrid"></div>
+</div>
+</section>
+<section class="randomshot-section intro-rise delay-1" id="randomshot">
+<div class="archive-panel randomshot-panel">
+<div class="archive-topbar">
+<div>
+<p class="eyebrow eyebrow-dark">Random shot of the day</p>
+<h2 class="archive-title" id="randomshotTitle"></h2>
+</div>
+</div>
+<div class="randomshot-wrap" id="randomshotWrap"></div>
+</div>
+</section>
+<section class="topshots-section intro-rise delay-1" id="topshots">
+<div class="archive-panel">
+<div class="archive-topbar">
+<div>
+<p class="eyebrow eyebrow-dark">Your most clicked</p>
+<h2 class="archive-title" id="topshotsTitle"></h2>
+</div>
+</div>
+<div class="archive-grid topshots-grid" id="topshotsGrid"></div>
+</div>
+</section>
+<section class="selected-section intro-rise delay-2" id="selected">
+<div class="collections-head">
+<p class="collections-kicker">Curated selection</p>
+<h2 class="collections-title">Collections</h2>
+</div>
+<div class="selected-grid-wrap">
+<div class="selected-grid selected-grid-categories" id="selectedGrid"></div>
+<button aria-label="Show all categories" class="center-mark" id="centerAll" type="button">
+<img alt="" src="assets/M-symbol-4.svg"/>
+</button>
+</div>
+</section>
+<section class="archive-section intro-rise delay-3" id="archive">
+<div class="archive-panel">
+<div class="archive-topbar">
+<div>
+<p class="eyebrow eyebrow-dark">Extended Archive</p>
+<h2 class="archive-title">Portfolio MMXXVI</h2>
+</div>
+<div class="archive-topbar-right">
+<button class="filter-btn filter-btn-all" id="filterAll" type="button">All</button>
+<button aria-pressed="false" class="nsfw-toggle" id="nsfwToggle" type="button">
+<span class="nsfw-desktop-only">
+<span class="nsfw-line-1">Reveal</span>
+<span class="nsfw-line-2">NSFW</span>
+<img alt="" class="nsfw-icon" src="assets/icon_NSFW.png"/>
+</span>
+<span class="nsfw-mobile-only">NSFW</span>
+</button>
+</div>
+</div>
+<div class="archive-controls"><div class="filters" id="filters"></div></div>
+<div class="archive-count" id="archiveCount"></div>
+<div class="archive-grid" id="archiveGrid"></div>
+</div>
+</section>
+<section class="bio-section intro-rise delay-3" id="bio">
+<!-- collage hero con fade verso il basso -->
+<div class="bio-collage-wrap">
+<img alt="" class="bio-collage-img" src="assets/philosographer_collage.jpg"/>
+<div class="bio-collage-fade"></div>
+</div>
+<div class="bio-layout">
+<!-- colonna sinistra: titolo + due blocchi testo -->
+<div class="bio-main">
+<div class="bio-header">
+<p class="bio-eyebrow">Philosopher</p>
+<h2 class="bio-name">Max Minninna</h2>
+</div>
+<div class="bio-columns">
+<div class="bio-col-text">
+<p class="bio-text">I'm Max. I come from the south, but I was born in Milan. Photography entered my life early: I must have been six or seven when I picked up my father's reflex camera, stepping into a new world. I remember the film, only 24 shots and</p>
+<p class="bio-quote">that big unknown of what you get</p>
+<p class="bio-text">the unmistakable magic of three trays in the darkroom. <br/>It feels like another era, back when there were still dinosaurs out there.</p>
+<p class="bio-text">Over time I realized photography isn't just a passion. It's, first of all, an exercise in observation. A way of being in the world; through travel, among people, within moments. Because you can't truly photograph if you haven't first stopped to look.</p>
+<p class="bio-text">Indeed, observation is also</p>
+<p class="bio-quote">the beginning of something deeper.</p>
+<p class="bio-text">A threshold. From there, an inner path unfolds; a kind of knowing that starts with the eye and moves inward, into</p>
+<p class="bio-quote">that submerged landscape<br/>made of being and feeling.</p>
+</div>
+<div class="bio-col-text">
+<p class="bio-text">Of course there's also a technical side, and</p>
+<p class="bio-quote">that's a compelling challenge</p>
+<p class="bio-text">to evolve, refine, gain precision. I enjoy shaping a vision through a lens just as much as sitting at an 88-key piano, at an SSL console, on a Python script, in a Neumann, or with an SL-1200.<br/>But technique, in the end, is only a means.</p>
+<p class="bio-text">At some point, you move beyond it.<br/>
+It becomes a quiet shift:</p>
+<p class="bio-quote">from knowing to understanding<br/>from intuition to feeling<br/>and eventually, to sharing.</p>
+<p class="bio-text">That's where photography really takes form. In trying to observe what isn't immediately visible, inside and out, and finding a way to express it.</p>
+<p class="bio-text">To the person within a portrait. Or to someone who, looking at that image, finds themselves for a moment in something that, even if isn't theirs, yet somehow belongs to them.</p>
+<p class="bio-quote">Because a photograph is just a moment.<br/>But somehow, it's also a way<br/>of taking it out of time.</p>
+</div>
+</div>
+</div>
+<!-- colonna destra: motto SVG + My Musings -->
+<div class="bio-aside">
+<div class="bio-motto-wrap">
+<img alt="Photography teaches us to observe" class="bio-motto-svg" src="assets/photography-motto.svg"/>
+</div>
+<a class="musings-link" href="musings/index.html"><span class="musings-enter">enter <svg fill="none" height="10" viewbox="0 0 38 10" width="38" xmlns="http://www.w3.org/2000/svg"><line stroke="currentColor" stroke-width="1" x1="0" x2="32" y1="5" y2="5"></line><polyline fill="none" points="28,1 33,5 28,9" stroke="currentColor" stroke-linejoin="round" stroke-width="1"></polyline></svg></span><span class="musings-main" id="musingsMain"><span class="mm">M</span>y<span class="musings-word-gap"> </span><span class="mm">M</span>usings</span><span class="musings-sub" id="musingsSub">the daily darkroom</span></a></div>
+</div>
+</section>
+<section class="contact-section intro-rise delay-3" id="contact">
+<div class="contact-wrap">
+<!-- top bar: video + titolo -->
+<div class="contact-header">
+<div class="contact-video-wrap">
+<video autoplay="" class="contact-video" loop="" muted="" playsinline="" src="assets/mmpopart.mp4"></video>
+</div>
+<div>
+<p class="eyebrow" style="margin-bottom:8px">Work with me</p>
+<h2 class="contact-title">Let's make<br/>something that lasts.</h2>
+</div>
+</div>
+<!-- due card servizi -->
+<p class="contact-intro">If you're here, you're probably looking for more than just images. There's something worth exploring, tell me what you're imagining.</p>
+<div class="contact-cards">
+<div class="contact-card">
+<p class="contact-card-kicker">The Signature Portrait</p>
+<p class="contact-card-body">Tailored sessions for actresses, talents, and creative souls. Elevating your portfolio with cinematic light.</p>
+<button aria-expanded="false" class="contact-card-rates-btn" type="button">See rates <span class="rates-chevron">↓</span></button>
+<div aria-hidden="true" class="contact-card-rates">
+<p class="rates-line"><span class="rates-label">Half day session</span><span class="rates-price">starting from €350</span></p>
+<p class="rates-line"><span class="rates-label">Full day session</span><span class="rates-price">starting from €600</span></p>
+<p class="rates-note">Includes editing and digital delivery. Location &amp; styling on request.</p>
+</div>
+</div>
+<div class="contact-card">
+<p class="contact-card-kicker">Interiors &amp; Spaces</p>
+<p class="contact-card-body">Documenting the harmony between design and environment.</p>
+<button aria-expanded="false" class="contact-card-rates-btn" type="button">See rates <span class="rates-chevron">↓</span></button>
+<div aria-hidden="true" class="contact-card-rates">
+<p class="rates-line"><span class="rates-label">Residential</span><span class="rates-price">starting from €280</span></p>
+<p class="rates-line"><span class="rates-label">Commercial / Studio</span><span class="rates-price">starting from €480</span></p>
+<p class="rates-note">Includes post-processing and high-res delivery. Up to 3 spaces.</p>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<div class="contact-cta-row">
+<button class="contact-cta-btn" id="openDrawer" type="button">
+            Let's start a conversation
+            <span class="contact-cta-arrow">→</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Drawer laterale -->
+<div aria-hidden="true" class="contact-drawer" id="contactDrawer">
+<div class="contact-drawer-overlay" id="drawerOverlay"></div>
+<div class="contact-drawer-panel">
+<button aria-label="Close" class="contact-drawer-close" id="closeDrawer">×</button>
+<div class="contact-drawer-inner">
+<p class="eyebrow" style="margin-bottom:12px">Inquiry</p>
+<h3 class="contact-drawer-title">Let's start a<br/>conversation.</h3>
+<p class="contact-drawer-sub">Tell me about your project and I'll get back to you.</p>
+<p class="geo-tagline">Based in Milan, available worldwide.</p>
+<form action="https://formspree.io/f/xojypbak" class="contact-drawer-fields" id="contactForm" method="POST">
+<div class="contact-field">
+<label class="contact-label" for="cf-name">Name</label>
+<input class="contact-input" id="cf-name" name="name" placeholder="Your name" required="" type="text"/>
+</div>
+<div class="contact-field">
+<label class="contact-label" for="cf-email">Email</label>
+<input class="contact-input" id="cf-email" name="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+<div class="contact-field">
+<label class="contact-label" for="cf-project">Project</label>
+<select class="contact-input contact-select" id="cf-project" name="project">
+<option value="">Select a service</option>
+<option>The Signature Portrait</option>
+<option>Interiors &amp; Spaces</option>
+<option>Other</option>
+</select>
+</div>
+<div class="contact-field">
+<label class="contact-label" for="cf-message">Message</label>
+<textarea class="contact-input contact-textarea" id="cf-message" name="message" placeholder="Tell me more…"></textarea>
+</div>
+<button class="contact-drawer-send" id="drawerSendBtn" type="submit">
+              Send message
+            </button>
+</form>
+<p class="contact-drawer-confirm" id="drawerConfirm" style="display:none">
+            ✓ Message sent — I'll be in touch soon.
+          </p>
+<a class="contact-drawer-alt" href="mailto:foto.minninna@gmail.com">or write directly →</a>
+</div>
+</div>
+</div>
+</main>
+<dialog class="lightbox" id="lightbox">
+<button aria-label="Close" class="lightbox-close" id="closeLightbox">×</button>
+<button aria-label="Previous" class="lightbox-arrow prev" id="prevLightbox">‹</button>
+<div class="lightbox-stage">
+<img alt="" id="lightboxImage"/>
+<div class="lightbox-meta">
+<div>
+<div class="lightbox-title" id="lightboxTitle"></div>
+<div class="lightbox-category" id="lightboxCategory"></div>
+</div>
+</div>
+</div>
+<button aria-label="Next" class="lightbox-arrow next" id="nextLightbox">›</button>
+</dialog>
+<footer class="site-footer">
+<div class="site-footer-inner">
+<img alt="" class="footer-symbol" src="assets/M-symbol-4.svg"/>
+<p class="footer-copy">© 2026 Max Minninna. All rights reserved.<br/>All photographic, textual, and visual content on this website is the exclusive property of the author and may not be reproduced, distributed, or used without prior written authorization.</p>
+</div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/photos.js"></script>
+<script src="assets/photos-latest.js"></script>
+<script src="assets/photos-top.js"></script>
+<script src="script.js"></script>
+<script>
+function fitSubtitle() {
+  const main = document.getElementById("musingsMain");
+  const sub = document.getElementById("musingsSub");
+
+  if (!main || !sub) return;
+
+  const mainWidth = main.offsetWidth;
+
+  sub.style.letterSpacing = "0px";
+
+  const text = sub.innerText;
+  const letters = text.length;
+
+  const subWidth = sub.offsetWidth;
+
+  const extraSpace = mainWidth - subWidth;
+
+  if (extraSpace > 0 && letters > 1) {
+    const spacing = extraSpace / (letters - 1);
+    sub.style.letterSpacing = spacing + "px";
+  }
+}
+
+window.addEventListener("resize", fitSubtitle);
+document.fonts.ready.then(fitSubtitle);
+</script></body>
+</html>

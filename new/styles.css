@@ -365,11 +365,11 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 
   .hero::before {
     background-size: min(52vw, 320px);
-    background-position: center 56%;
+    background-position: center 53%;
   }
 
   .hero-logo-wrap {
-    top: 62px;
+    top: 56px;
     width: min(88vw, 380px);
   }
 
@@ -380,11 +380,11 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 @media (max-width: 430px) {
   .hero::before {
     background-size: min(60vw, 270px);
-    background-position: center 57%;
+    background-position: center 54%;
   }
 
   .hero-logo-wrap {
-    top: 68px;
+    top: 62px;
     width: min(86vw, 340px);
   }
 }

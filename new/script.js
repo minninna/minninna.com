@@ -106,8 +106,8 @@ window.addEventListener('load', function initHero() {
     const aw = ph * slide.aspect;
     const left = (W - aw) / 2;
 
-    const safeTop = isMobile ? H * 0.27 : H * 0.20;
-    const safeBot = isMobile ? H * 0.72 : H * 0.78;
+    const safeTop = isMobile ? H * 0.25 : H * 0.20;
+    const safeBot = isMobile ? H * 0.70 : H * 0.78;
     const availableTopRange = Math.max(0, safeBot - ph - safeTop);
     const top = safeTop + Math.random() * availableTopRange;
     const el = document.createElement('div');

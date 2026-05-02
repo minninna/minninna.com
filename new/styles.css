@@ -365,7 +365,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 
   .hero::before {
     background-size: min(52vw, 320px);
-    background-position: center 53%;
+    background-position: center 50%;
   }
 
   .hero-logo-wrap {
@@ -380,7 +380,7 @@ body.reveal-nsfw .is-nsfw img { filter: none; transition: filter 1.4s ease; }
 @media (max-width: 430px) {
   .hero::before {
     background-size: min(60vw, 270px);
-    background-position: center 54%;
+    background-position: center 51%;
   }
 
   .hero-logo-wrap {
